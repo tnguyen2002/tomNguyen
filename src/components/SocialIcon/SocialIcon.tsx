@@ -5,25 +5,25 @@ import {
 	faYoutube,
 	faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
-
+import "./SocialIcon.css";
 const SocialIcons = () => {
 	const links = [
+		{
+			url: "https://www.linkedin.com/in/bard-large-language-model/",
+			icon: faLinkedin,
+		},
 		{ url: "https://github.com/bard", icon: faGithub },
 		{
 			url: "https://www.youtube.com/c/BardLargeLanguageModel",
 			icon: faYoutube,
 		},
-		{
-			url: "https://www.linkedin.com/in/bard-large-language-model/",
-			icon: faLinkedin,
-		},
 	];
 
 	return (
-		<div className="social-icons">
+		<div className="social-icons-container">
 			{links.map((link, index) => (
-				<a key={index} href={link.url} target="_blank" className="social-icon">
-					<FontAwesomeIcon icon={link.icon} />
+				<a key={index} href={link.url} target="_blank">
+					<FontAwesomeIcon icon={link.icon} className="fa-xl" />
 				</a>
 			))}
 		</div>

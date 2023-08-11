@@ -1,0 +1,62 @@
+/* Home.css */
+
+.HomeContainer {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 20%;
+	transform: translate(-50%, -50%);
+	text-align: left;
+	/* font-family: 'Inter var',sans-serif; */
+	font-family: "Overpass", Helvetica, sans-serif;
+}
+
+.Name {
+	font-size: 50px;
+	font-weight: bold;
+}
+.About {
+	color: #c094cc;
+}
+
+.Section {
+	padding-bottom: 30px;
+}
+.Thinking {
+	color: #a9aaab;
+}
+.sectionText {
+	font-weight: bolder;
+}
+a {
+	color: #000;
+	text-decoration: none;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: #beadfa;
+}
+
+.Projects {
+	text-align: center;
+}
+
+.Projects a {
+	background-color: #000;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.projectNavlink {
+	text-decoration: underline;
+	font-weight: bolder;
+}
+
+.sectionText {
+	font-size: 15px;
+}

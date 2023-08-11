@@ -1,0 +1,8 @@
+.social-icons-container {
+	display: flex;
+	justify-content: left;
+	padding-bottom: 20px;
+}
+.fa-xl {
+	padding-right: 10px;
+}
