@@ -4,10 +4,12 @@ import React, { Component, useState, useEffect } from "react";
 import { isCommaListExpression } from "typescript";
 import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 import Airtable from "airtable";
+import "./Projects.css";
 
 interface project {
 	Name: string;
 	Link: string;
+	Description: string;
 }
 
 const AIRTABLE_API_TOKEN = process.env.REACT_APP_AIRTABLE_API_TOKEN;
@@ -50,17 +52,18 @@ function Projects() {
 		setAllProjects(data.data);
 	});
 	return (
-		<div>
-			<NavLink to="/">Home</NavLink>
+		<div className="projectsContainer">
+			<NavLink className="homeNavLink" to="/">
+				← Home
+			</NavLink>
 			{allProjects.map((project) => (
-				<li>
-					<div>
-						{project.Name}{" "}
-						<a href={project.Link} target="_blank">
-							Link
-						</a>
-					</div>
-				</li>
+				<div className="projectsItem">
+					<div className="projectTitle">{project.Name}</div>{" "}
+					<div className="projectDescription">{project.Description}</div>
+					<a href={project.Link} target="_blank">
+						[code]
+					</a>
+				</div>
 			))}
 		</div>
 	);

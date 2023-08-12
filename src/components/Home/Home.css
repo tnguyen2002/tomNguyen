@@ -28,16 +28,18 @@
 	color: #a9aaab;
 }
 .sectionText {
-	font-weight: bolder;
+	font-size: 15px;
+	color: #7c7a7a;
+	font-weight: 600;
 }
 a {
-	color: #000;
+	color: #ff5d73;
+	font-weight: bold;
 	text-decoration: none;
-	text-decoration: underline;
 }
 
 a:hover {
-	color: #beadfa;
+	color: #454ade;
 }
 
 .Projects {
@@ -53,7 +55,6 @@ a:hover {
 }
 
 .projectNavlink {
-	text-decoration: underline;
 	font-weight: bolder;
 }
 

@@ -9,12 +9,12 @@ import "./SocialIcon.css";
 const SocialIcons = () => {
 	const links = [
 		{
-			url: "https://www.linkedin.com/in/bard-large-language-model/",
+			url: "https://www.linkedin.com/in/tom-nguyen-55b5001b8/",
 			icon: faLinkedin,
 		},
-		{ url: "https://github.com/bard", icon: faGithub },
+		{ url: "https://github.com/tnguyen2002", icon: faGithub },
 		{
-			url: "https://www.youtube.com/c/BardLargeLanguageModel",
+			url: "https://www.youtube.com/@tomnguyen4548",
 			icon: faYoutube,
 		},
 	];
