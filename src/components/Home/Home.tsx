@@ -1,8 +1,5 @@
-import React from "react";
-import Projects from "../Projects/Projects";
 import SocialIcons from "../SocialIcon/SocialIcon";
-import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
-import Themes from "../../themes";
+import { NavLink } from "react-router-dom";
 import "./Home.css";
 function Home() {
 	return (
@@ -17,23 +14,13 @@ function Home() {
 				<div>
 					<div className="sectionText">
 						I am interested in creating AI/ML products and currently working @{" "}
-						<a href="https://www.nasa.gov/ames" target="_blank">
-							NASA
-						</a>
-						. I am currently in my 4th year @{" "}
-						<a href="https://www.stanford.edu/" target="_blank">
-							Stanford
-						</a>{" "}
-						and will soon be pursuing a masters. In my free time I enjoy playing
+						<a href="https://www.nasa.gov/ames">NASA</a>. I am currently in my
+						4th year @ <a href="https://www.stanford.edu/">Stanford</a> and will
+						soon be pursuing a masters. In my free time I enjoy playing
 						volleyball and making videos on{" "}
-						<a href="https://www.youtube.com/@tomnguyen4548" target="_blank">
-							Youtube
-						</a>
-						. My academic{" "}
-						<a
-							href="https://airtable.com/appNGte73TR0vBXG2/shrPevp160CKqhAKv"
-							target="_blank"
-						>
+						<a href="https://www.youtube.com/@tomnguyen4548">Youtube</a>. My
+						academic{" "}
+						<a href="https://airtable.com/appNGte73TR0vBXG2/shrPevp160CKqhAKv">
 							background
 						</a>{" "}
 						is primarily computer science with specks of economics and math.

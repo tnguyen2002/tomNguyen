@@ -1,4 +1,3 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faGithub,
@@ -22,7 +21,7 @@ const SocialIcons = () => {
 	return (
 		<div className="social-icons-container">
 			{links.map((link, index) => (
-				<a key={index} href={link.url} target="_blank">
+				<a key={index} href={link.url}>
 					<FontAwesomeIcon icon={link.icon} className="fa-xl" />
 				</a>
 			))}
