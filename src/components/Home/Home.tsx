@@ -10,7 +10,6 @@ function Home() {
 			</div>
 
 			<div className="Section">
-				{/* <div className="About">About Me</div> */}
 				<div>
 					<div className="sectionText">
 						I am interested in creating AI/ML products and currently working @{" "}

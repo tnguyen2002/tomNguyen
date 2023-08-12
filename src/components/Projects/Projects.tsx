@@ -1,8 +1,5 @@
-import { get } from "http";
-import { type } from "os";
-import React, { Component, useState, useEffect } from "react";
-import { isCommaListExpression } from "typescript";
-import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import Airtable from "airtable";
 import "./Projects.css";
 
@@ -60,9 +57,7 @@ function Projects() {
 				<div className="projectsItem">
 					<div className="projectTitle">{project.Name}</div>{" "}
 					<div className="projectDescription">{project.Description}</div>
-					<a href={project.Link} target="_blank">
-						[code]
-					</a>
+					<a href={project.Link}>[code]</a>
 				</div>
 			))}
 		</div>
