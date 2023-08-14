@@ -3,17 +3,20 @@
 .HomeContainer {
 	display: flex;
 	flex-direction: column;
+	flex-flow: row wrap;
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	width: 30rem;
+	height: 40%;
+	width: 20%;
+	flex-shrink: 1;
 	transform: translate(-50%, -50%);
 	text-align: left;
 	font-family: "Overpass", Helvetica, sans-serif;
 }
 
 .Name {
-	font-size: 5rem;
+	font-size: 3rem;
 	font-weight: bold;
 }
 .About {
@@ -22,9 +25,6 @@
 
 .Section {
 	padding-bottom: 3rem;
-}
-.Thinking {
-	color: #a9aaab;
 }
 .sectionText {
 	font-size: 1.5rem;
@@ -58,5 +58,5 @@ a:hover {
 }
 
 .sectionText {
-	font-size: 1.5rem;
+	font-size: 1rem;
 }
