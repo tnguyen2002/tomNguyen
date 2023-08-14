@@ -8,7 +8,6 @@ function Home() {
 			<div className="Section">
 				<div className="Name">Tom Nguyen</div>
 			</div>
-
 			<div className="Section">
 				<div>
 					<div className="sectionText">
