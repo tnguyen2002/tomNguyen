@@ -6,12 +6,12 @@
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	width: 90%; /* Adjust the width to a percentage */
-	max-width: 20rem; /* Add a max-width to prevent it from becoming too wide */
+	width: 30rem;
 	transform: translate(-50%, -50%);
 	text-align: left;
 	font-family: "Overpass", Helvetica, sans-serif;
 }
+
 .Name {
 	font-size: 5rem;
 	font-weight: bold;
@@ -22,7 +22,6 @@
 
 .Section {
 	padding-bottom: 3rem;
-	flex-grow: 1;
 }
 .Thinking {
 	color: #a9aaab;
@@ -60,42 +59,4 @@ a:hover {
 
 .sectionText {
 	font-size: 1.5rem;
-}
-@media screen and (max-width: 768px) {
-	/* Adjust styles for screens with a maximum width of 768px */
-	.HomeContainer {
-		display: flex;
-		flex-direction: column;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: 90%; /* Adjust the width to a percentage */
-		max-width: 20rem; /* Add a max-width to prevent it from becoming too wide */
-		transform: translate(-50%, -50%);
-		text-align: left;
-		font-family: "Overpass", Helvetica, sans-serif;
-	}
-
-	.Name {
-		font-size: 5vw; /* Use viewport width units for font size */
-		font-weight: bold;
-	}
-
-	/* ... (Other styles remain the same) */
-
-	.sectionText {
-		font-size: 2vw; /* Use viewport width units for font size */
-		color: #7c7a7a;
-		font-weight: 600;
-	}
-
-	/* Use flex-grow to allow the content to grow and shrink as needed */
-	.Section {
-		flex-grow: 1;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: flex-start;
-		padding: 2vw; /* Use viewport width units for padding */
-	}
 }
