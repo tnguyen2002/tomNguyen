@@ -1,8 +1,12 @@
-.social-icons-container {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* .social-icons-container {
 	display: flex;
 	justify-content: left;
 	padding-bottom: 20px;
+	width: 100%;
 }
 .fa-xl {
 	padding-right: 10px;
-}
+} */

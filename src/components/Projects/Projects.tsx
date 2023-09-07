@@ -7,6 +7,9 @@ interface project {
 	Name: string;
 	Link: string;
 	Description: string;
+	Website: string;
+	Poster: string;
+	Report: string;
 }
 
 const AIRTABLE_API_TOKEN = process.env.REACT_APP_AIRTABLE_API_TOKEN;
@@ -29,7 +32,7 @@ const returnError = (error: any): any => ({
 const output: any[] = [];
 const getData: Promise<any> = new Promise((resolve, reject) =>
 	base("Projects")
-		.select({ maxRecords: 1, view: "Grid view" })
+		.select({ maxRecords: 2, view: "Grid view" })
 		.eachPage(
 			function page(records: any, fetchNextPage: any) {
 				records.map((record: any) => output.push(record.fields));
@@ -49,15 +52,34 @@ function Projects() {
 		setAllProjects(data.data);
 	});
 	return (
-		<div className="projectsContainer">
-			<NavLink className="homeNavLink" to="/">
+		<div className="w-2/4">
+			<NavLink className="font-bold text-rose-500" to="/">
 				← Home
 			</NavLink>
 			{allProjects.map((project) => (
-				<div className="projectsItem">
-					<div className="projectTitle">{project.Name}</div>{" "}
-					<div className="projectDescription">{project.Description}</div>
-					<a href={project.Link}>[code]</a>
+				<div>
+					<div className="font-bold">{project.Name}</div>{" "}
+					<div>{project.Description}</div>
+					<div className="flex flex-row">
+						<a className="font-bold text-rose-500" href={project.Link}>
+							[Code]
+						</a>
+						{project.Website && (
+							<a className="font-bold text-rose-500" href={project.Website}>
+								[Website]
+							</a>
+						)}
+						{project.Report && (
+							<a className="font-bold text-rose-500" href={project.Report}>
+								[Report]
+							</a>
+						)}
+						{project.Poster && (
+							<a className="font-bold text-rose-500" href={project.Poster}>
+								[Poster]
+							</a>
+						)}
+					</div>
 				</div>
 			))}
 		</div>

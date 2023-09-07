@@ -3,31 +3,50 @@ import { NavLink } from "react-router-dom";
 import "./Home.css";
 function Home() {
 	return (
-		<div className="HomeContainer">
+		<div className="flex flex-col w-1/4">
 			<SocialIcons />
-			<div className="Section">
-				<div className="Name">Tom Nguyen</div>
+			<div>
+				<div className="font-bold text-lg">Tom Nguyen</div>
 			</div>
 			<div className="Section">
 				<div>
-					<div className="sectionText">
+					<div>
 						I am interested in creating AI/ML products and currently working @{" "}
-						<a href="https://www.nasa.gov/ames">NASA</a>. I am currently in my
-						4th year @ <a href="https://www.stanford.edu/">Stanford</a> and will
-						soon be pursuing a masters. In my free time I enjoy playing
+						<a
+							className="font-bold text-rose-500"
+							href="https://www.nasa.gov/ames"
+						>
+							NASA
+						</a>
+						. I am currently in my 4th year @{" "}
+						<a
+							className="font-bold text-rose-500"
+							href="https://www.stanford.edu/"
+						>
+							Stanford
+						</a>{" "}
+						and will soon be pursuing a masters. In my free time I enjoy playing
 						volleyball and making videos on{" "}
-						<a href="https://www.youtube.com/@tomnguyen4548">Youtube</a>. My
-						academic{" "}
-						<a href="https://airtable.com/appNGte73TR0vBXG2/shrPevp160CKqhAKv">
+						<a
+							className="font-bold text-rose-500"
+							href="https://www.youtube.com/@tomnguyen4548"
+						>
+							Youtube
+						</a>
+						. My academic{" "}
+						<a
+							className="font-bold text-rose-500"
+							href="https://airtable.com/appNGte73TR0vBXG2/shrPevp160CKqhAKv"
+						>
 							background
 						</a>{" "}
 						is primarily computer science with specks of economics and math.
 					</div>
-					<div className="sectionText">Contact: anhn@stanford.edu</div>
+					<div>Contact: anhn@stanford.edu</div>
 				</div>
 			</div>
-			<div className="Section">
-				<NavLink className="projectNavlink" to="/projects">
+			<div className="font-bold text-rose-500">
+				<NavLink className="text-rose-500" to="/projects">
 					Projects →
 				</NavLink>
 			</div>

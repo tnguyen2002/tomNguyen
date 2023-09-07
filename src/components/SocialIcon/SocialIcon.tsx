@@ -8,7 +8,7 @@ import "./SocialIcon.css";
 const SocialIcons = () => {
 	const links = [
 		{
-			url: "https://www.linkedin.com/in/tom-nguyen-55b5001b8/",
+			url: "https://www.linkedin.com/in/anhtomnguyen/",
 			icon: faLinkedin,
 		},
 		{ url: "https://github.com/tnguyen2002", icon: faGithub },
@@ -19,9 +19,9 @@ const SocialIcons = () => {
 	];
 
 	return (
-		<div className="social-icons-container">
+		<div className="flex flex-row justify-left">
 			{links.map((link, index) => (
-				<a key={index} href={link.url}>
+				<a className="font-bold text-rose-500 pr-2" key={index} href={link.url}>
 					<FontAwesomeIcon icon={link.icon} className="fa-xl" />
 				</a>
 			))}

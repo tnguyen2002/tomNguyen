@@ -4,7 +4,7 @@ import Projects from "./components/Projects/Projects";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
 	return (
-		<div className="App">
+		<div className="flex flex-col items-center justify-center h-screen">
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Home />} />
