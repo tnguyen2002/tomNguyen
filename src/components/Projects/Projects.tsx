@@ -30,6 +30,24 @@ const returnError = (error: any): any => ({
 });
 
 const output: any[] = [];
+// const getData = (): Promise<any> => {
+// 	return new Promise((resolve, reject) =>
+// 		base("Projects")
+// 			.select({ maxRecords: 2, view: "Grid view" })
+// 			.eachPage(
+// 				function page(records: any, fetchNextPage: any) {
+// 					records.map((record: any) => output.push(record.fields));
+// 					fetchNextPage();
+// 				},
+// 				function done(err) {
+// 					if (err) {
+// 						resolve(returnError(err));
+// 					}
+// 					resolve(returnSuccess(output));
+// 				}
+// 			)
+// 	);
+// };
 const getData: Promise<any> = new Promise((resolve, reject) =>
 	base("Projects")
 		.select({ maxRecords: 2, view: "Grid view" })
@@ -48,16 +66,15 @@ const getData: Promise<any> = new Promise((resolve, reject) =>
 );
 function Projects() {
 	const [allProjects, setAllProjects] = useState<project[]>([]);
-	getData.then((data) => {
-		setAllProjects(data.data);
-	});
+	getData.then((data) => setAllProjects(data.data));
+
 	return (
 		<div className="w-2/4">
 			<NavLink className="font-bold text-rose-500" to="/">
 				← Home
 			</NavLink>
-			{allProjects.map((project) => (
-				<div>
+			{allProjects.map((project, key) => (
+				<div key={key}>
 					<div className="font-bold">{project.Name}</div>{" "}
 					<div>{project.Description}</div>
 					<div className="flex flex-row">
