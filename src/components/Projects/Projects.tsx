@@ -30,24 +30,6 @@ const returnError = (error: any): any => ({
 });
 
 const output: any[] = [];
-// const getData = (): Promise<any> => {
-// 	return new Promise((resolve, reject) =>
-// 		base("Projects")
-// 			.select({ maxRecords: 2, view: "Grid view" })
-// 			.eachPage(
-// 				function page(records: any, fetchNextPage: any) {
-// 					records.map((record: any) => output.push(record.fields));
-// 					fetchNextPage();
-// 				},
-// 				function done(err) {
-// 					if (err) {
-// 						resolve(returnError(err));
-// 					}
-// 					resolve(returnSuccess(output));
-// 				}
-// 			)
-// 	);
-// };
 const getData: Promise<any> = new Promise((resolve, reject) =>
 	base("Projects")
 		.select({ maxRecords: 2, view: "Grid view" })

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import "./Home.css";
 function Home() {
 	return (
-		<div className="flex flex-col w-1/4">
+		<div className="flex flex-col w-full sm:w-1/4">
 			<SocialIcons />
 			<div>
 				<div className="font-bold text-lg">Tom Nguyen</div>
