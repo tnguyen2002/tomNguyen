@@ -1,7 +1,7 @@
 ### Personal Website
 
 Website:
-[tomnguyen.info](https://tomnguyen.info/)
+[tomnguyen.ai](https://tomnguyen.ai/)
 
 Contact:
 Email: anhn@stanford.edu
