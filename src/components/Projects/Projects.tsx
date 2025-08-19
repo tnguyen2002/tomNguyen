@@ -51,6 +51,13 @@ function Projects() {
       ],
     },
     {
+      Name: "MNIST with Numpy",
+      Link: "https://github.com/tnguyen2002/mnist_numpy",
+      Description: [
+        "An MNIST classifier built only with numpy and strictly no vibe coding ",
+      ],
+    },
+    {
       Name: "Felix",
       Description: [
         "Felix is Rubik’s cube solver that uses built-in webcams to scan each face and returns a human-readable solution to the scramble.",
