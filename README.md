@@ -3,6 +3,6 @@
 Website:
 [tomnguyen.ai](https://tomnguyen.ai/)
 
-Contact:
-Email: tomthuckynguyen@gmail.com
+Email: 
+tomthuckynguyen@gmail.com
 
