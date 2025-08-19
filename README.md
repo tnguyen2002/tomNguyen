@@ -4,5 +4,5 @@ Website:
 [tomnguyen.ai](https://tomnguyen.ai/)
 
 Contact:
-Email: anhn@stanford.edu
+Email: tomthuckynguyen@gmail.com
 
