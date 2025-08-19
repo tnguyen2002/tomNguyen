@@ -1,48 +1,38 @@
 import SocialIcons from "../SocialIcon/SocialIcon";
-import { NavLink } from "react-router-dom";
 import "./Home.css";
 function Home() {
   return (
-    <div className="flex flex-col w-full sm:w-1/4">
-      <SocialIcons />
-      <div>
-        <div className="font-bold text-lg">Tom Nguyen</div>
-      </div>
-      <div className="Section">
-        <div>
-          <div>
-            I am interested in creating AI/ML products. I am currently in my 4th
-            year @{" "}
-            <a
-              className="font-bold text-rose-500"
-              href="https://www.stanford.edu/"
-            >
-              Stanford
-            </a>{" "}
-            and will soon be pursuing a masters. In my free time I enjoy playing
-            volleyball and making videos on{" "}
-            <a
-              className="font-bold text-rose-500"
-              href="https://www.youtube.com/@tomnguyen4548"
-            >
-              Youtube
-            </a>
-            . My academic{" "}
-            <a
-              className="font-bold text-rose-500"
-              href="https://airtable.com/appNGte73TR0vBXG2/shrPevp160CKqhAKv"
-            >
-              background
-            </a>{" "}
-            is primarily computer science with specks of economics and math.
-          </div>
-          <div>Contact: anhn@stanford.edu</div>
+    <div className="flex flex-col w-full items-start text-left">
+      <div className="w-full flex flex-col">
+        <div className="flex flex-row items-center gap-2 mb-0">
+          <div className="font-bold text-xl mb-0">tom nguyen</div>
+          <SocialIcons />
         </div>
-      </div>
-      <div className="font-bold text-rose-500">
-        <NavLink className="text-rose-500" to="/projects">
-          Projects →
-        </NavLink>
+        <div className="Section mb-0">
+          <div>
+            <div className="text-xl leading-relaxed mb-0">
+              <div className="mb-3">
+                currently: unemployed by choice chasing my must haves 2/3,
+                coding everyday, and introspecting,
+              </div>
+              <div className="mb-3">
+                just finished b.s & m.s in cs @stanford
+              </div>
+              <div className="mb-3">
+                things that make me happy: volleyball, journaling, and making
+                occasional videos on{" "}
+                <a
+                  className="font-bold text-rose-500 text-xl"
+                  href="https://www.youtube.com/@tomnguyen4548"
+                >
+                  youtube
+                </a>
+              </div>
+              <div className="mb-3">website has no capitals letters</div>
+              <div className="mb-3">contact: tomthuckynguyen@gmail.com</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

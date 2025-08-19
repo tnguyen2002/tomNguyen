@@ -1,88 +1,120 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import Airtable from "airtable";
 import "./Projects.css";
 
-interface project {
-	Name: string;
-	Link: string;
-	Description: string;
-	Website: string;
-	Poster: string;
-	Report: string;
+interface Project {
+  Name: string;
+  Link?: string;
+  Description: string[];
+  Website?: string;
+  Poster?: string;
+  Report?: string;
+  Demo?: string;
 }
 
-const AIRTABLE_API_TOKEN = process.env.REACT_APP_AIRTABLE_API_TOKEN;
-Airtable.configure({
-	apiKey: AIRTABLE_API_TOKEN,
-});
-const base = Airtable.base("appNGte73TR0vBXG2");
-const returnSuccess = (data: any): any => ({
-	success: true,
-	data,
-	error: "",
-});
-
-const returnError = (error: any): any => ({
-	success: false,
-	data: [],
-	error,
-});
-
-const output: any[] = [];
-const getData: Promise<any> = new Promise((resolve, reject) =>
-	base("Projects")
-		.select({ maxRecords: 2, view: "Grid view" })
-		.eachPage(
-			function page(records: any, fetchNextPage: any) {
-				records.map((record: any) => output.push(record.fields));
-				fetchNextPage();
-			},
-			function done(err) {
-				if (err) {
-					resolve(returnError(err));
-				}
-				resolve(returnSuccess(output));
-			}
-		)
-);
 function Projects() {
-	const [allProjects, setAllProjects] = useState<project[]>([]);
-	getData.then((data) => setAllProjects(data.data));
+  const fillerProjects: Project[] = [
+    {
+      Name: "GANDALF-MD",
+      Description: [
+        "Developed a GAN training method for medical imagery that integrates learned augmentations from Viewmaker Networks with DiffAugment’s differentiable augmentation framework.",
+        "Improved image quality for multiple medical imaging modalities: skin lesions, pathology tissue slides, and retinal fundus images",
+      ],
+      Link: "https://github.com/tnguyen2002/GANDALF-MD", // Code
+      Report:
+        "https://drive.google.com/file/d/1GceUlrLSWwjQF4A8ZsDxrUjCclLImul6/view", // Report
+      Poster:
+        "https://drive.google.com/file/d/1pJD2CZyGIRjJHr-gOd51RXHqrIPGzzMn/view", // Poster
+      Demo: "", // Demo
+    },
+    {
+      Name: "Pathology WSI Embeddings via Multimodal Language Guided Self-Supervision",
+      Description: [
+        "Self-supervised interpretable pathology whole slide image embeddings using OpenAI’s CLIP contrastive learning framework and a patched based co-attention mechanism, using over 20,000+ patch images",
+      ],
+      Report:
+        "https://drive.google.com/file/d/1MHXvMp6agYfCFgQhjY0hVtAGmzVqRETS/view?usp=sharing", // Report
+      Poster:
+        "https://drive.google.com/file/d/1WZ8pqc72-EwrebfYIxAU02sDzleQGo3p/view", // Poster
+      Demo: "", // Demo
+    },
+    {
+      Name: "AWS Trainium Convolutions",
+      Description: [
+        "Developed a fused convolution + max-pool kernel on the AWS Trainium (NeuronCore) accelerator for large ML workloads.",
+        "Implemented tiling, streaming, and loop optimizations to maximize tensor engine utilization and reduce memory overhead.",
+      ],
+    },
+    {
+      Name: "Simple Cuda Renderer",
+      Description: [
+        "Basic GPU-accelerated renderer in CUDA to generate millions of circles with guarantees of atomicity and order correctness.",
+        "Leveraged data-parallel GPU kernels to increase throughput by using a tile-based binning with prefix-sum memory compaction, contiguous memory access, warp-synchronous patterns, and balancing load with a work-queue system.",
+      ],
+    },
+    {
+      Name: "Felix",
+      Description: [
+        "Felix is Rubik’s cube solver that uses built-in webcams to scan each face and returns a human-readable solution to the scramble.",
+        "Leverages OpenCV for canny edge detection, CIEDE2000 color classification, and contour detection to reconstruct cube state",
+      ],
+      Link: "https://github.com/tnguyen2002/feliks", // Github
+      Demo: "https://drive.google.com/file/d/1PxF8HhCKiHEwGDhYK_wz2IJOvZ7hBClJ/view?usp=drive_link", // Demo
+      Report:
+        "https://drive.google.com/file/d/1MHXvMp6agYfCFgQhjY0hVtAGmzVqRETS/view?usp=sharing", // Report
+    },
+    {
+      Name: "Eyeris",
+      Description: [
+        "Eyeris is a mobile app that integrates GPT-4 and Whisper from OpenAI to provide descriptive textual captions and audio transcripts, to support visually impaired users in understanding their surroundings.",
+        "Awarded outstanding project by Google sponsor at Stanford Software fair, competing against 70 other projects",
+      ],
+      Link: "https://github.com/tnguyen2002/Eyeris", // Github
+      Demo: "https://www.linkedin.com/feed/update/urn:li:activity:7209814489251086336/", // Demo
+    },
+  ];
 
-	return (
-		<div className="w-2/4">
-			<NavLink className="font-bold text-rose-500" to="/">
-				← Home
-			</NavLink>
-			{allProjects.map((project, key) => (
-				<div key={key}>
-					<div className="font-bold">{project.Name}</div>{" "}
-					<div>{project.Description}</div>
-					<div className="flex flex-row">
-						<a className="font-bold text-rose-500" href={project.Link}>
-							[Code]
-						</a>
-						{project.Website && (
-							<a className="font-bold text-rose-500" href={project.Website}>
-								[Website]
-							</a>
-						)}
-						{project.Report && (
-							<a className="font-bold text-rose-500" href={project.Report}>
-								[Report]
-							</a>
-						)}
-						{project.Poster && (
-							<a className="font-bold text-rose-500" href={project.Poster}>
-								[Poster]
-							</a>
-						)}
-					</div>
-				</div>
-			))}
-		</div>
-	);
+  return (
+    <div className="flex flex-col w-full items-start text-left">
+      {fillerProjects.map((project, key) => (
+        <div key={key} className="mb-8">
+          <div className="font-bold text-2xl mb-2">
+            {project.Name.toLowerCase()}
+          </div>
+          <ul className="text-xl mb-2 list-disc list-inside">
+            {project.Description.map((desc, i) => (
+              <li key={i}>{desc.toLowerCase()}</li>
+            ))}
+          </ul>
+          <div className="flex flex-row gap-4">
+            {project.Link && (
+              <a className="font-bold text-rose-500" href={project.Link}>
+                [Code]
+              </a>
+            )}
+            {project.Demo && (
+              <a className="font-bold text-rose-500" href={project.Demo}>
+                [Demo]
+              </a>
+            )}
+            {project.Website && (
+              <a className="font-bold text-rose-500" href={project.Website}>
+                [Website]
+              </a>
+            )}
+            {project.Report && (
+              <a className="font-bold text-rose-500" href={project.Report}>
+                [Report]
+              </a>
+            )}
+            {project.Poster && (
+              <a className="font-bold text-rose-500" href={project.Poster}>
+                [Poster]
+              </a>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default Projects;
