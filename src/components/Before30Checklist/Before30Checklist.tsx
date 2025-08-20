@@ -33,7 +33,6 @@ function Before30Checklist() {
 
   return (
     <div className="flex flex-col w-full items-start text-left">
-      <div className="font-bold text-2xl mb-1">before 30 checklist</div>
       <div className="text-lg mb-2">
         {checklist.map((item, idx) => (
           <div key={idx} className="mb-2 flex items-center">
