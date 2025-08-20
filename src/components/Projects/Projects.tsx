@@ -80,40 +80,38 @@ function Projects() {
   ];
 
   return (
-    <div className="flex flex-col w-full items-start text-left">
+    <div className="projects-container">
       {fillerProjects.map((project, key) => (
-        <div key={key} className="mb-8">
-          <div className="font-bold text-2xl mb-2">
-            {project.Name.toLowerCase()}
-          </div>
-          <ul className="text-xl mb-2 list-disc list-inside">
+        <div key={key} className="project-item">
+          <div className="project-title">{project.Name}</div>
+          <ul className="project-desc">
             {project.Description.map((desc, i) => (
-              <li key={i}>{desc.toLowerCase()}</li>
+              <li key={i}>{desc}</li>
             ))}
           </ul>
-          <div className="flex flex-row gap-4">
+          <div className="project-links">
             {project.Link && (
-              <a className="font-bold text-rose-500" href={project.Link}>
+              <a className="project-link" href={project.Link}>
                 [Code]
               </a>
             )}
             {project.Demo && (
-              <a className="font-bold text-rose-500" href={project.Demo}>
+              <a className="project-link" href={project.Demo}>
                 [Demo]
               </a>
             )}
             {project.Website && (
-              <a className="font-bold text-rose-500" href={project.Website}>
+              <a className="project-link" href={project.Website}>
                 [Website]
               </a>
             )}
             {project.Report && (
-              <a className="font-bold text-rose-500" href={project.Report}>
+              <a className="project-link" href={project.Report}>
                 [Report]
               </a>
             )}
             {project.Poster && (
-              <a className="font-bold text-rose-500" href={project.Poster}>
+              <a className="project-link" href={project.Poster}>
                 [Poster]
               </a>
             )}
