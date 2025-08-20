@@ -12,9 +12,9 @@ function App() {
   const [showDreamJob, setShowDreamJob] = useState(false);
   const [showChecklist, setShowChecklist] = useState(false);
   return (
-    <div className="min-h-screen flex flex-col items-start justify-center">
+    <div className="min-h-screen flex flex-col items-start justify-center bg-white">
       <div
-        className="w-full sm:w-2/3 px-8 py-8 flex flex-col items-start ml-12"
+        className="w-full max-w-full xl:max-w-screen-2xl px-2 sm:px-8 xl:px-32 py-6 sm:py-12 xl:py-20 flex flex-col items-start mx-auto"
         style={{}}
       >
         <Home />

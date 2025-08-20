@@ -80,38 +80,53 @@ function Projects() {
   return (
     <div className="flex flex-col w-full items-start text-left">
       {fillerProjects.map((project, key) => (
-        <div key={key} className="mb-8">
-          <div className="font-bold text-2xl mb-1">
+        <div key={key} className="mb-6 sm:mb-8">
+          <div className="font-bold text-xl mb-1">
             {project.Name.toLowerCase()}
           </div>
-          <ul className="text-lg list-disc list-inside mb-1">
+          <ul className="text-xl list-disc list-inside mb-1">
             {project.Description.map((desc, i) => (
               <li key={i}>{desc.toLowerCase()}</li>
             ))}
           </ul>
-          <div className="flex flex-wrap gap-4 mt-2">
+          <div className="flex flex-wrap gap-2 sm:gap-4 mt-2">
             {project.Link && (
-              <a className="font-bold text-rose-500" href={project.Link}>
+              <a
+                className="font-bold text-rose-500 text-sm sm:text-base lg:text-lg"
+                href={project.Link}
+              >
                 [code]
               </a>
             )}
             {project.Demo && (
-              <a className="font-bold text-rose-500" href={project.Demo}>
+              <a
+                className="font-bold text-rose-500 text-sm sm:text-base"
+                href={project.Demo}
+              >
                 [demo]
               </a>
             )}
             {project.Website && (
-              <a className="font-bold text-rose-500" href={project.Website}>
+              <a
+                className="font-bold text-rose-500 text-sm sm:text-base"
+                href={project.Website}
+              >
                 [website]
               </a>
             )}
             {project.Report && (
-              <a className="font-bold text-rose-500" href={project.Report}>
+              <a
+                className="font-bold text-rose-500 text-sm sm:text-base"
+                href={project.Report}
+              >
                 [report]
               </a>
             )}
             {project.Poster && (
-              <a className="font-bold text-rose-500" href={project.Poster}>
+              <a
+                className="font-bold text-rose-500 text-sm sm:text-base"
+                href={project.Poster}
+              >
                 [poster]
               </a>
             )}

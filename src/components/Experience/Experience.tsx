@@ -71,15 +71,21 @@ function Experience() {
   return (
     <div className="flex flex-col w-full items-start text-left">
       {experiences.map((exp, idx) => (
-        <div key={idx} className="mb-8">
-          <div className="font-bold text-2xl mb-1">
-            {exp.title.toLowerCase()}
+        <div key={idx} className="mb-6 sm:mb-8">
+          <div className="flex flex-row flex-wrap items-center justify-between w-full mb-1">
+            <div className="flex flex-row flex-wrap items-center gap-x-4">
+              <span className="font-bold text-xl">
+                {exp.title.toLowerCase()}
+              </span>
+              <span className="text-xl text-rose-500">
+                {exp.organization.toLowerCase()}
+              </span>
+            </div>
+            <span className="text-xs sm:text-md lg:text-lg text-gray-500 whitespace-nowrap">
+              {exp.date.toLowerCase()}
+            </span>
           </div>
-          <div className="text-xl mb-1 text-rose-500">
-            {exp.organization.toLowerCase()}
-          </div>
-          <div className="text-md mb-1">{exp.date.toLowerCase()}</div>
-          <ul className="text-lg list-disc list-inside">
+          <ul className="text-xl list-disc list-inside">
             {exp.description.map((desc, i) => (
               <li key={i}>{desc.toLowerCase()}</li>
             ))}
