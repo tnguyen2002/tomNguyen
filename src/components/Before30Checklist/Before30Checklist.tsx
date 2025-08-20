@@ -29,6 +29,8 @@ function Before30Checklist() {
     { text: "Play volleyball in a foreign country with natives", done: true },
     { text: "Average sub 15sec on 3x3 (current avg: 23)", done: false },
     { text: "Fold an origami collection", done: false },
+    { text: "Join the 1000 lbs club", done: false },
+    { text: "Do the splits", done: false },
   ];
 
   return (
