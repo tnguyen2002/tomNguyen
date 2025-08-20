@@ -1,5 +1,3 @@
-import "./Projects.css";
-
 interface Project {
   Name: string;
   Link?: string;
@@ -80,39 +78,41 @@ function Projects() {
   ];
 
   return (
-    <div className="projects-container">
+    <div className="flex flex-col w-full items-start text-left">
       {fillerProjects.map((project, key) => (
-        <div key={key} className="project-item">
-          <div className="project-title">{project.Name}</div>
-          <ul className="project-desc">
+        <div key={key} className="mb-8">
+          <div className="font-bold text-2xl mb-1">
+            {project.Name.toLowerCase()}
+          </div>
+          <ul className="text-lg list-disc list-inside mb-1">
             {project.Description.map((desc, i) => (
-              <li key={i}>{desc}</li>
+              <li key={i}>{desc.toLowerCase()}</li>
             ))}
           </ul>
-          <div className="project-links">
+          <div className="flex flex-wrap gap-4 mt-2">
             {project.Link && (
-              <a className="project-link" href={project.Link}>
-                [Code]
+              <a className="font-bold text-rose-500" href={project.Link}>
+                [code]
               </a>
             )}
             {project.Demo && (
-              <a className="project-link" href={project.Demo}>
-                [Demo]
+              <a className="font-bold text-rose-500" href={project.Demo}>
+                [demo]
               </a>
             )}
             {project.Website && (
-              <a className="project-link" href={project.Website}>
-                [Website]
+              <a className="font-bold text-rose-500" href={project.Website}>
+                [website]
               </a>
             )}
             {project.Report && (
-              <a className="project-link" href={project.Report}>
-                [Report]
+              <a className="font-bold text-rose-500" href={project.Report}>
+                [report]
               </a>
             )}
             {project.Poster && (
-              <a className="project-link" href={project.Poster}>
-                [Poster]
+              <a className="font-bold text-rose-500" href={project.Poster}>
+                [poster]
               </a>
             )}
           </div>

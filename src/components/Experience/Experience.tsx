@@ -1,5 +1,3 @@
-import React from "react";
-
 interface ExperienceItem {
   title: string;
   organization: string;

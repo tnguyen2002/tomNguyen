@@ -5,7 +5,6 @@ import {
   faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import "./SocialIcon.css";
 const SocialIcons = () => {
   const links = [
     {

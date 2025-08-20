@@ -32,20 +32,21 @@ function Before30Checklist() {
   ];
 
   return (
-    <div className="w-full">
-      <ul className="list-none text-xl mb-2">
+    <div className="flex flex-col w-full items-start text-left">
+      <div className="font-bold text-2xl mb-1">before 30 checklist</div>
+      <div className="text-lg mb-2">
         {checklist.map((item, idx) => (
-          <li key={idx} className="mb-2 flex items-center">
+          <div key={idx} className="mb-2 flex items-center">
             <span className="font-bold mr-2">{idx + 1}.</span>
             <span className={item.done ? "line-through text-gray-400" : ""}>
               {item.text.toLowerCase()}
             </span>
-          </li>
+          </div>
         ))}
-        <li className="mt-4 text-gray-500 italic">
+        <div className="mt-4 text-gray-500 italic">
           still figuring out the rest, created in 8/2025
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   );
 }

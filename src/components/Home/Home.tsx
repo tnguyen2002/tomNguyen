@@ -1,5 +1,4 @@
 import SocialIcons from "../SocialIcon/SocialIcon";
-import "./Home.css";
 function Home() {
   return (
     <div className="flex flex-col w-full items-start text-left">
