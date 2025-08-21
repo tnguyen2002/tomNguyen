@@ -1,7 +1,7 @@
 function DreamJobCriteria() {
   const mustHaves = [
     {
-      text: "be an mle developing along the brainwaves of pipelines for generating best dating profiles, insta captions, or converting irl movies to different anime styles",
+      text: "be an mle",
     },
     { text: "be a coding youtuber" },
     {
