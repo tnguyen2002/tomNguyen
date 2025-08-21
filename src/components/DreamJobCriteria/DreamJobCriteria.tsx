@@ -1,11 +1,11 @@
 function DreamJobCriteria() {
   const mustHaves = [
     {
-      text: "be an mle",
+      text: "code",
     },
-    { text: "be a coding youtuber" },
+    { text: "diet" },
     {
-      text: "in a company with a culture of 'a little bit of slope makes up for a lot of y-intercept' - john ousterhout",
+      text: "exercise",
     },
   ];
 

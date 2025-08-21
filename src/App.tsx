@@ -23,7 +23,7 @@ function App() {
           onClick={() => setShowDreamJob((prev) => !prev)}
         >
           <span className="font-bold text-rose-500 text-xl mr-2">
-            my must haves
+            3 things everyday
           </span>
           <span
             className={`transform transition-transform duration-300 text-xl ${
