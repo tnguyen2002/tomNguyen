@@ -16,7 +16,7 @@ function Before30Checklist() {
       text: "Write some form of literature be it blog, book, or poetry",
       done: false,
     },
-    { text: "Do 1 card magic show for my friends", done: false },
+    { text: "Do a card tricks magic show for my friends", done: false },
     { text: "Run a marathon", done: false },
     { text: "Write a language model completely from scratch", done: false },
     { text: "Buy my mom and dad an all expenses paid vacation", done: false },
@@ -28,9 +28,13 @@ function Before30Checklist() {
     { text: "Learn how to do a handstand push up", done: false },
     { text: "Play volleyball in a foreign country with natives", done: true },
     { text: "Average sub 15sec on 3x3 (current avg: 23)", done: false },
-    { text: "Fold an origami collection", done: false },
+    {
+      text: "Fold an origami collection with atleast 50 different works",
+      done: false,
+    },
     { text: "Join the 1000 lbs club", done: false },
     { text: "Do the splits", done: false },
+    { text: "12% body fat", done: false },
   ];
 
   return (
