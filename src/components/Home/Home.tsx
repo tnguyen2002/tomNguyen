@@ -13,7 +13,7 @@ function Home() {
           <div>
             <div className="text-base sm:text-xl lg:text-2xl leading-relaxed mb-0">
               <div className="mb-2 sm:mb-3">
-                currently: only doing 3 things everyday,
+                currently: only doing 3 things everyday
               </div>
               <div className="mb-2 sm:mb-3">
                 just finished b.s & m.s in cs @stanford
