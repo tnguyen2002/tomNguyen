@@ -23,7 +23,7 @@ function Home() {
                 occasional videos on{" "}
                 <a
                   className="font-bold text-rose-500 text-base sm:text-xl lg:text-2xl"
-                  href="https://www.youtube.com/@tomnguyen4548"
+                  href="https://www.youtube.com/@tom_nguyennnn"
                 >
                   youtube
                 </a>
