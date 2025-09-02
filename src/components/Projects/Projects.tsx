@@ -30,8 +30,6 @@ function Projects() {
       ],
       Report:
         "https://drive.google.com/file/d/1MHXvMp6agYfCFgQhjY0hVtAGmzVqRETS/view?usp=sharing", // Report
-      Poster:
-        "https://drive.google.com/file/d/1WZ8pqc72-EwrebfYIxAU02sDzleQGo3p/view", // Poster
       Demo: "", // Demo
     },
     {

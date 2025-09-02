@@ -8,7 +8,7 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
   {
     title: "Software Development Engineering Intern",
-    organization: "Amazon, Nashville, TN",
+    organization: "Amazon",
     date: "June 2024 – September 2024",
     description: [
       "Spearheaded development of a full-stack application that supports Amazon inspections of dangerous goods for over 10,000 packages daily, increasing operational efficiency, utilizing Kotlin, Java, TypeScript, and DynamoDB.",
@@ -18,19 +18,17 @@ const experiences: ExperienceItem[] = [
   },
   {
     title: "Research Intern",
-    organization:
-      "Stanford Machine Learning Group (Andrew Ng’s Group), Stanford, CA",
+    organization: "Stanford Machine Learning Group (Andrew Ng's Group)",
     date: "Jan 2024 – June 2024",
     description: [
-      "Advised by Andrew Ng to research pre-training objectives for foundation models using medical imaging modalities.",
+      "Advised by Andrew Ng to research Dinov2 pre-training objective in the domain of medical imaging modalities",
       "Modified Dinov2 for 3D modalities and pre-trained multiple different models with medical CT scans.",
       "Conducted experiments with a MAE pre-training objective for a downstream UNETR organ segmentation task.",
-      "Achieved performance that surpassed baseline experiments and demonstrated that useful features transfer between organs & modalities, leveraging knowledge of Python, PyTorch, and Monai.",
     ],
   },
   {
     title: "CS 106a/b Teaching Assistant",
-    organization: "Stanford University, Stanford, CA",
+    organization: "Stanford University",
     date: "September 2023 – June 2024",
     description: [
       "Taught weekly lecture-style workshops on programming methodology to 10+ students in Python and C++.",
@@ -40,7 +38,7 @@ const experiences: ExperienceItem[] = [
   },
   {
     title: "AI/ML Instructor & Program Manager",
-    organization: "InspiritAI, Remote",
+    organization: "InspiritAI",
     date: "June 2023 - June 2024",
     description: [
       "Spearheaded remote instruction in Python programming for a diverse cohort of over 15 high school students daily, resulting in the mentorship of 200+ students in total.",
@@ -49,7 +47,7 @@ const experiences: ExperienceItem[] = [
   },
   {
     title: "Software Engineering Intern",
-    organization: "NASA Ames Center, Mountain View, CA",
+    organization: "NASA Ames Center",
     date: "June 2023 – August 2023",
     description: [
       "Built a retrieval-augmented generative Q&A pipeline with Haystack to help engineers in preliminary design review and risk assessment of different NASA missions (foundation for potential usage from 100+ engineers).",
@@ -58,7 +56,7 @@ const experiences: ExperienceItem[] = [
   },
   {
     title: "Software Engineering Intern (Full-Stack)",
-    organization: "NASA Ames Center, Mountain View, CA",
+    organization: "NASA Ames Center",
     date: "June 2021 – August 2021",
     description: [
       "Constructed an internal timeline web application, to visualize mission progress for various NASA teams.",
@@ -75,10 +73,10 @@ function Experience() {
           <div className="flex flex-row flex-wrap items-center justify-between w-full mb-1">
             <div className="flex flex-row flex-wrap items-center gap-x-4">
               <span className="font-bold text-xl">
-                {exp.title.toLowerCase()}
+                {exp.organization.toLowerCase()}
               </span>
               <span className="text-xl text-rose-500">
-                {exp.organization.toLowerCase()}
+                {exp.title.toLowerCase()}
               </span>
             </div>
             <span className="text-xs sm:text-md lg:text-lg text-gray-500 whitespace-nowrap">
