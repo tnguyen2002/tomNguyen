@@ -21,9 +21,8 @@ const experiences: ExperienceItem[] = [
     organization: "Stanford Machine Learning Group (Andrew Ng's Group)",
     date: "Jan 2024 – June 2024",
     description: [
-      "Advised by Andrew Ng to research Dinov2 pre-training objective in the domain of medical imaging modalities",
-      "Modified Dinov2 for 3D modalities and pre-trained multiple different models with medical CT scans.",
-      "Conducted experiments with a MAE pre-training objective for a downstream UNETR organ segmentation task.",
+      "Advised by Andrew Ng to leverage Dinov2 and MAE self-supervised pre-training objectives for 3D medical imaging modalities",
+      "Conducted downstream benchmarks for an organ classification task and 3D organ segmentation via a UNETR",
     ],
   },
   {
