@@ -1,55 +1,28 @@
+import { checklist, checklistNote } from "../../data/checklist";
+
 function Before30Checklist() {
-  const checklist = [
-    { text: "Start a company", done: false },
-    {
-      text: "Give a singing/acoustic concert to my friends with at least 5 songs",
-      done: false,
-    },
-    { text: "Go to Europe", done: false }, // example struck through
-    { text: "Japan", done: true },
-    { text: "Buy my entire extended family a meal", done: true },
-    { text: "Go to 1 World Cup game", done: false },
-    { text: "10k YouTube subscribers", done: false },
-    { text: "Learn how to play an anime opening on piano", done: false },
-    { text: "Go to an F1 race", done: false },
-    {
-      text: "Write some form of literature be it blog, book, or poetry",
-      done: false,
-    },
-    { text: "Do a card tricks magic show for my friends", done: false },
-    { text: "Run a marathon", done: false },
-    { text: "Write a language model completely from scratch", done: false },
-    { text: "Buy my mom and dad an all expenses paid vacation", done: false },
-    { text: "Become a millionaire?", done: false },
-    { text: "Develop a game, be it platform or whatever", done: false },
-    { text: "Deploy an app on the App Store as a side hustle", done: false },
-    { text: "Be an extra in a movie releasing in theaters", done: false },
-    { text: "Create a short film", done: false },
-    { text: "Learn how to do a handstand push up", done: false },
-    { text: "Play volleyball in a foreign country with natives", done: true },
-    { text: "Average sub 15sec on 3x3 (current avg: 23)", done: false },
-    {
-      text: "Fold an origami collection with atleast 50 different works",
-      done: false,
-    },
-    { text: "Join the 1000 lbs club", done: false },
-    { text: "Do the splits", done: false },
-    { text: "12% body fat", done: false },
-  ];
+  const doneCount = checklist.filter((item) => item.done).length;
 
   return (
     <div className="flex flex-col w-full items-start text-left">
       <div className="text-xl mb-2">
+        <div className="mb-3 text-gray-400 text-sm tabular-nums">
+          {doneCount} / {checklist.length} done
+        </div>
         {checklist.map((item, idx) => (
           <div key={idx} className="mb-1 sm:mb-2 flex items-center">
             <span className="font-bold mr-2">{idx + 1}.</span>
-            <span className={item.done ? "line-through text-gray-400" : ""}>
-              {item.text.toLowerCase()}
+            <span
+              className={`lowercase ${
+                item.done ? "line-through text-gray-400" : ""
+              }`}
+            >
+              {item.text}
             </span>
           </div>
         ))}
         <div className="mt-2 sm:mt-4 text-gray-500 italic text-xs sm:text-base">
-          still figuring out the rest, created in 8/2025
+          {checklistNote}
         </div>
       </div>
     </div>

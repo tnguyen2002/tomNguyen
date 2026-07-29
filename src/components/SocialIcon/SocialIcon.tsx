@@ -1,36 +1,34 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
-  faYoutube,
   faLinkedin,
-  faTwitter,
+  faXTwitter,
+  IconDefinition,
 } from "@fortawesome/free-brands-svg-icons";
-const SocialIcons = () => {
-  const links = [
-    {
-      url: "https://www.linkedin.com/in/anhtomnguyen/",
-      icon: faLinkedin,
-    },
-    { url: "https://github.com/tnguyen2002", icon: faGithub },
-    {
-      url: "https://www.youtube.com/@tomnguyen4548",
-      icon: faYoutube,
-    },
-    {
-      url: "https://x.com/t0m_win",
-      icon: faTwitter,
-    },
-  ];
+import { socials } from "../../data/profile";
+import type { SocialId } from "../../data/types";
 
-  return (
-    <div className="flex flex-row justify-start">
-      {links.map((link, index) => (
-        <a className="font-bold text-rose-500 pr-2" key={index} href={link.url}>
-          <FontAwesomeIcon icon={link.icon} className="fa-xl" />
-        </a>
-      ))}
-    </div>
-  );
+const ICONS: Record<SocialId, IconDefinition> = {
+  linkedin: faLinkedin,
+  github: faGithub,
+  x: faXTwitter,
 };
+
+const SocialIcons = () => (
+  <nav aria-label="social links" className="flex flex-row justify-start">
+    {socials.map((social) => (
+      <a
+        className="font-bold text-rose-500 pr-2"
+        key={social.id}
+        href={social.href}
+        aria-label={social.label}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FontAwesomeIcon icon={ICONS[social.id]} className="fa-xl" />
+      </a>
+    ))}
+  </nav>
+);
 
 export default SocialIcons;
