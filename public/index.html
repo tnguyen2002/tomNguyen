@@ -15,6 +15,34 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!--
+      Fonts live in public/ and are declared here rather than in src/index.css
+      for two reasons:
+        1. css-loader resolves root-absolute url("/fonts/...") against the repo
+           root, so that form fails the build inside src/.
+        2. A file under src/ gets content-hashed by webpack, so its final name
+           is unknowable at HTML-authoring time and cannot be preloaded.
+      The `crossorigin` attribute is mandatory — fonts are always fetched in
+      CORS mode, and omitting it causes the file to be downloaded twice.
+      Bump the -v1 suffix to bust caches; public/ files are not hashed.
+    -->
+    <link
+      rel="preload"
+      href="%PUBLIC_URL%/fonts/inter-variable-latin-v1.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <style>
+      @font-face {
+        font-family: "Inter Variable";
+        src: url("/fonts/inter-variable-latin-v1.woff2") format("woff2");
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
