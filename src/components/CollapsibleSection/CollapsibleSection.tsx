@@ -69,9 +69,12 @@ function CollapsibleSection({
         )}
       >
         {/* min-h-0 is mandatory — without it the 0fr row will not clamp.
-            The bottom padding lives inside the clipped wrapper so that it
-            collapses along with the content. */}
-        <div className="min-h-0 overflow-hidden pb-10">{children}</div>
+            The bottom padding has to sit on a CHILD of the grid item, not the
+            item itself: min-height:0 does not shrink padding, so padding here
+            would keep the collapsed row 40px tall instead of 0. */}
+        <div className="min-h-0 overflow-hidden">
+          <div className="pb-10">{children}</div>
+        </div>
       </div>
     </section>
   );

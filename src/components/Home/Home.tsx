@@ -3,30 +3,31 @@ import { profile } from "../../data/profile";
 
 function Home() {
   return (
-    <div className="flex w-full flex-col items-start text-left">
-      <div className="mb-1 flex flex-row items-center gap-2">
-        <h1 className="text-lg font-bold lowercase tracking-tight sm:text-xl lg:text-3xl">
+    <header className="flex w-full flex-col items-start text-left">
+      <div className="mb-5 flex flex-row items-center gap-3">
+        <h1 className="text-3xl font-semibold lowercase tracking-tight sm:text-4xl lg:text-5xl">
           {profile.name}
         </h1>
         <SocialLinks />
       </div>
-      <div className="text-base leading-relaxed sm:text-xl lg:text-2xl">
+
+      <div className="max-w-measure text-base leading-relaxed text-neutral-600 sm:text-lg lg:text-xl">
         {profile.bio.map((line) => (
-          <p key={line} className="mb-2 sm:mb-3">
+          <p key={line} className="mb-1.5 sm:mb-2">
             {line}
           </p>
         ))}
-        <p className="mb-2 sm:mb-3">
+        <p className="mb-1.5 sm:mb-2">
           contact:{" "}
           <a
-            className="font-bold text-rose-500 underline-offset-4 hover:underline"
+            className="font-medium text-rose-500 underline-offset-4 transition-colors hover:text-rose-600 hover:underline motion-reduce:transition-none"
             href={`mailto:${profile.email}`}
           >
             {profile.email}
           </a>
         </p>
       </div>
-    </div>
+    </header>
   );
 }
 
