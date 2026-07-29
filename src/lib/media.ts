@@ -36,3 +36,13 @@ export const pending: ProjectVisual = { kind: "pending" };
 
 /** There will never be one — renders a typographic stack tile instead. */
 export const noVisual: ProjectVisual = { kind: "none" };
+
+/**
+ * Cover art paths. Leave `cover` off a book or podcast until the file actually
+ * exists — the tile falls back to a typographic panel rather than a broken
+ * image icon.
+ *
+ *   cover: bookCover("the-beginning-of-infinity")
+ */
+export const bookCover = (slug: string) => `/media/books/${slug}.jpg`;
+export const podcastCover = (slug: string) => `/media/podcasts/${slug}.jpg`;

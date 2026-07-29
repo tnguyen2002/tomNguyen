@@ -96,6 +96,45 @@ Check with `du -sh public/media`.
 > Raw `.mov` recordings are gitignored on purpose — a 30-second 4K capture is
 > 200+ MB and git would keep it forever. Only the encoded mp4 gets committed.
 
+## bookshelf, podcasts, substack
+
+Same idea — data only, in `src/data/`.
+
+**Books** (`books.ts`) and **podcasts** (`podcasts.ts`) render as cover grids.
+Covers are optional: leave `cover` off and the tile falls back to a typographic
+panel carrying the title, so the grid looks intentional before you source any
+artwork. Add one like this:
+
+```ts
+// public/media/books/dune.jpg  (2:3 portrait, ~400x600, <= 80 KB)
+import { bookCover } from "../lib/media";
+{ slug: "dune", title: "Dune", author: "Frank Herbert", cover: bookCover("dune") }
+```
+
+```ts
+// public/media/podcasts/acquired.jpg  (1:1 square, ~600x600, <= 80 KB)
+import { podcastCover } from "../lib/media";
+{ slug: "acquired", name: "Acquired", host: "Ben Gilbert & David Rosenthal",
+  cover: podcastCover("acquired") }
+```
+
+Resize with the same tool as the project screenshots:
+
+```bash
+sips -s format jpeg -s formatOptions 80 -Z 600 ~/Downloads/cover.png \
+  --out public/media/books/dune.jpg
+```
+
+When a cover exists the caption shows title + author; without one the tile
+carries the title and the caption shows just the author, so nothing prints
+twice.
+
+**Substack** (`substack.ts`) holds `url`, `intro`, and a `posts` array. Empty
+`posts` and the section renders just the intro line and the subscribe link —
+useful if you'd rather not keep a post list in sync.
+
+> Everything in these three files is currently a `TODO(tom)` placeholder.
+
 ## notes
 
 - `tailwind.config.js` must stay at the repo root with exactly that name:

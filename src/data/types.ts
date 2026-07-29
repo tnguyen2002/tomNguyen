@@ -68,3 +68,36 @@ export interface SocialLink {
   label: string;
   href: string;
 }
+
+/** Aspect ratio of a cover tile. Book jackets are 2:3, podcast art is square. */
+export type CoverRatio = "portrait" | "square";
+
+export interface Book {
+  /** Cover filename stem: public/media/books/<slug>.jpg */
+  slug: string;
+  title: string;
+  author: string;
+  /** Optional one-line take. Shown under the grid caption on hover-free layouts. */
+  note?: string;
+  /** Omit until a cover file exists — the tile falls back to a typographic one. */
+  cover?: string;
+  href?: string;
+}
+
+export interface Podcast {
+  /** Cover filename stem: public/media/podcasts/<slug>.jpg */
+  slug: string;
+  name: string;
+  host?: string;
+  note?: string;
+  cover?: string;
+  href?: string;
+}
+
+export interface SubstackPost {
+  title: string;
+  /** Free text, e.g. "mar 2026" — these are hand-maintained. */
+  date: string;
+  blurb?: string;
+  href: string;
+}
