@@ -9,7 +9,7 @@ function App() {
   const [showExperience, setShowExperience] = useState(false);
   const [showChecklist, setShowChecklist] = useState(false);
   return (
-    <div className="min-h-screen flex flex-col items-start justify-center bg-white">
+    <main className="min-h-screen flex flex-col items-start justify-center bg-white">
       <div
         className="w-full max-w-full xl:max-w-screen-2xl px-2 sm:px-8 xl:px-32 py-6 sm:py-12 xl:py-20 flex flex-col items-start mx-auto"
       >
@@ -85,7 +85,7 @@ function App() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

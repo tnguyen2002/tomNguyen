@@ -1,3 +1,4 @@
+import ExternalLink from "../ExternalLink/ExternalLink";
 import { projects } from "../../data/projects";
 
 function Projects() {
@@ -13,13 +14,13 @@ function Projects() {
           </ul>
           <div className="flex flex-wrap gap-2 sm:gap-4 mt-2">
             {project.links.map((link) => (
-              <a
+              <ExternalLink
                 key={link.label}
                 className="font-bold text-rose-500 text-sm sm:text-base"
                 href={link.href}
               >
                 [{link.label}]
-              </a>
+              </ExternalLink>
             ))}
           </div>
         </div>
