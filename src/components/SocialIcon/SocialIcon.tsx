@@ -23,7 +23,7 @@ const SocialIcons = () => {
   ];
 
   return (
-    <div className="flex flex-row justify-left">
+    <div className="flex flex-row justify-start">
       {links.map((link, index) => (
         <a className="font-bold text-rose-500 pr-2" key={index} href={link.url}>
           <FontAwesomeIcon icon={link.icon} className="fa-xl" />

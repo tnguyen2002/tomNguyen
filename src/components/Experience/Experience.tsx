@@ -78,7 +78,7 @@ function Experience() {
                 {exp.title.toLowerCase()}
               </span>
             </div>
-            <span className="text-xs sm:text-md lg:text-lg text-gray-500 whitespace-nowrap">
+            <span className="text-xs sm:text-sm lg:text-base text-gray-500 whitespace-nowrap">
               {exp.date.toLowerCase()}
             </span>
           </div>

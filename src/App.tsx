@@ -1,4 +1,3 @@
-import "./App.css";
 import Home from "./components/Home/Home";
 import Projects from "./components/Projects/Projects";
 import Experience from "./components/Experience/Experience";
@@ -13,7 +12,6 @@ function App() {
     <div className="min-h-screen flex flex-col items-start justify-center bg-white">
       <div
         className="w-full max-w-full xl:max-w-screen-2xl px-2 sm:px-8 xl:px-32 py-6 sm:py-12 xl:py-20 flex flex-col items-start mx-auto"
-        style={{}}
       >
         <Home />
         <div
