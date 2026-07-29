@@ -13,6 +13,11 @@ interface ProjectRowProps {
 function ProjectRow({ project, index }: ProjectRowProps) {
   const [ref, inView] = useInView<HTMLElement>({ once: true, threshold: 0.12 });
 
+  // The first row is above the fold on load, so it is never gated behind the
+  // reveal — content a visitor can already see should not have to fade in, and
+  // it means nothing above the fold depends on IntersectionObserver firing.
+  const revealed = index === 0 || inView;
+
   const reverse = index % 2 === 1;
   const visual = project.visual ?? { kind: "none" as const };
   const summary = project.summary ?? project.description[0];
@@ -34,7 +39,7 @@ function ProjectRow({ project, index }: ProjectRowProps) {
       className={cn(
         "grid items-center gap-6 border-t border-neutral-200/70 py-12 transition-all duration-700 ease-out-expo motion-reduce:transition-none",
         hasMedia && "md:grid-cols-2 md:gap-12 md:py-20 lg:gap-16",
-        inView
+        revealed
           ? "translate-y-0 opacity-100"
           : "translate-y-3 opacity-0 motion-reduce:translate-y-0 motion-reduce:opacity-100"
       )}
