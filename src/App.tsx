@@ -1,90 +1,51 @@
+import type { ReactNode } from "react";
+import Page from "./components/Layout/Page";
 import Home from "./components/Home/Home";
+import CollapsibleSection from "./components/CollapsibleSection/CollapsibleSection";
 import Projects from "./components/Projects/Projects";
 import Experience from "./components/Experience/Experience";
 import Before30Checklist from "./components/Before30Checklist/Before30Checklist";
-import { useState } from "react";
+
+interface Section {
+  id: string;
+  label: string;
+  defaultOpen?: boolean;
+  content: ReactNode;
+}
+
+const SECTIONS: Section[] = [
+  {
+    id: "projects",
+    label: "projects",
+    defaultOpen: true,
+    content: <Projects />,
+  },
+  { id: "experience", label: "experience", content: <Experience /> },
+  {
+    id: "before-30",
+    label: "30 before 30 not forbes",
+    content: <Before30Checklist />,
+  },
+];
 
 function App() {
-  const [showProjects, setShowProjects] = useState(false);
-  const [showExperience, setShowExperience] = useState(false);
-  const [showChecklist, setShowChecklist] = useState(false);
   return (
-    <main className="min-h-screen flex flex-col items-start justify-center bg-white">
-      <div
-        className="w-full max-w-full xl:max-w-screen-2xl px-2 sm:px-8 xl:px-32 py-6 sm:py-12 xl:py-20 flex flex-col items-start mx-auto"
-      >
+    <main className="min-h-screen bg-white">
+      <Page>
         <Home />
-        <div
-          className="mt-4 flex items-center cursor-pointer select-none"
-          onClick={() => setShowProjects((prev) => !prev)}
-        >
-          <span className="font-bold text-rose-500 text-xl mr-2">projects</span>
-          <span
-            className={`transform transition-transform duration-300 text-xl ${
-              showProjects ? "rotate-90" : ""
-            }`}
-          >
-            &#8594;
-          </span>
+        <div className="mt-12 w-full sm:mt-16">
+          {SECTIONS.map((section) => (
+            <CollapsibleSection
+              key={section.id}
+              id={section.id}
+              label={section.label}
+              defaultOpen={section.defaultOpen}
+            >
+              {section.content}
+            </CollapsibleSection>
+          ))}
         </div>
-        <div
-          className={`overflow-hidden transition-all duration-500 ease-in-out w-full flex justify-start ${
-            showProjects ? "max-h-none opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="w-full">
-            <Projects />
-          </div>
-        </div>
-        <div
-          className="mt-4 flex items-center cursor-pointer select-none"
-          onClick={() => setShowExperience((prev) => !prev)}
-        >
-          <span className="font-bold text-rose-500 text-xl mr-2">
-            experience
-          </span>
-          <span
-            className={`transform transition-transform duration-300 text-xl ${
-              showExperience ? "rotate-90" : ""
-            }`}
-          >
-            &#8594;
-          </span>
-        </div>
-        <div
-          className={`overflow-hidden transition-all duration-500 ease-in-out w-full flex justify-start ${
-            showExperience ? "max-h-none opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="w-full">
-            <Experience />
-          </div>
-        </div>
-        <div
-          className="mt-4 flex items-center cursor-pointer select-none"
-          onClick={() => setShowChecklist((prev) => !prev)}
-        >
-          <span className="font-bold text-rose-500 text-xl mr-2">
-            30 before 30 not forbes
-          </span>
-          <span
-            className={`transform transition-transform duration-300 text-xl ${
-              showChecklist ? "rotate-90" : ""
-            }`}
-          >
-            &#8594;
-          </span>
-        </div>
-        <div
-          className={`overflow-hidden transition-all duration-500 ease-in-out w-full flex justify-start ${
-            showChecklist ? "max-h-none opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="w-full">
-            <Before30Checklist />
-          </div>
-        </div>
-      </div>
+      </Page>
     </main>
   );
 }
