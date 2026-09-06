@@ -35,7 +35,7 @@ def digit_glyph(side=1.5):
 
 class MnistNumpy(Scene):
     def construct(self):
-        chrome = header(self, "mnist, numpy only", "every gradient derived and written by hand", PERI)
+        chrome = header(self, "mnist, numpy only", "an mnist classifier from scratch in numpy — backprop by hand, no frameworks", PERI)
 
         digit = digit_glyph(1.6).move_to(LEFT * 5.0 + DOWN * 0.45)
 

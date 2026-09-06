@@ -40,7 +40,7 @@ def swatch(colour, s=0.42, stroke=LINE):
 
 class Felix(Scene):
     def construct(self):
-        chrome = header(self, "Felix", "scan the cube through a webcam, then get the solution moves back", LEAF)
+        chrome = header(self, "Felix", "a rubik's cube solver that reads the cube through your webcam and hands back a solution", LEAF)
 
         # --- the real detector output
         scan_img = ImageMobject(str(ASSETS / "felix_scan.png")).set_height(2.85)

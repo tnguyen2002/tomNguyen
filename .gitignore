@@ -35,3 +35,10 @@ CLAUDE.md
 
 # derived from the poster PDF — regenerate with scripts/manim/gandalf_md_assets.py
 /scripts/manim/assets
+
+# python bytecode from rendering the manim scenes
+__pycache__/
+*.pyc
+
+# manim render output and caches if run without --media_dir
+/scripts/manim/media

@@ -90,7 +90,7 @@ def link(a, b, color=MUTED, w=2.8):
 
 class Distilled(Scene):
     def construct(self):
-        chrome = header(self, "distilled.gg", "a whole vod in, a clip of every kill you got out", AMBER)
+        chrome = header(self, "distilled.gg", "drop an overwatch 2 vod, get back a clip of every kill you got, cut to the frame", AMBER)
 
         stages = [vod_glyph(), sampled_glyph(), killrow_glyph(), ocr_glyph(), vote_glyph(), clips_glyph()]
         row = Group(*stages).arrange(RIGHT, buff=0.50)

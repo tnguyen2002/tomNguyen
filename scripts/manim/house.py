@@ -68,19 +68,12 @@ def arrow(start, end, color=MUTED):
 
 
 def header(scene, name, line, accent):
-    """Title, plus one static caption when `line` is given.
-
-    Pass line=None to drop the caption: the site prints the project's own
-    summary directly under the video, so a subtitle burnt into the frame can
-    just repeat it a couple of inches higher.
+    """No-op. The demos used to open with a title and a one-line caption, but
+    the site prints the project's name and summary directly under the video,
+    so the frame now carries neither. Kept so every scene's
+    `close(self, keep=[chrome[0]])` still has something to hold on to.
     """
-    title = label(name, 40, INK).to_edge(UP, buff=0.40)
-    if line is None:
-        scene.play(FadeIn(title, shift=DOWN * 0.12), run_time=0.50)
-        return VGroup(title)
-    sub = label(line, 23, accent).next_to(title, DOWN, buff=0.16)
-    scene.play(FadeIn(title, shift=DOWN * 0.12), FadeIn(sub), run_time=0.50)
-    return VGroup(title, sub)
+    return VGroup(VGroup())
 
 
 def close(scene, keep):

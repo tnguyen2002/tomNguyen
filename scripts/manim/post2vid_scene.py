@@ -90,7 +90,7 @@ def link(a, b, color=MUTED, w=2.8):
 
 class Post2Vid(Scene):
     def construct(self):
-        chrome = header(self, "post2vid", None, CLAY)
+        chrome = header(self, "post2vid", "an x account that turns any paper, article, or technical question into a narrated animated video", CLAY)
 
         # Top band: the mention becomes a claimed job.
         top = [post_glyph(), clock_glyph(), stack_glyph(), cog_glyph()]

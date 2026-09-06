@@ -44,7 +44,7 @@ class Gandalf(Scene):
     def construct(self):
         chrome = header(
             self, "GANDALF-MD",
-            "a learned augmentation, applied to real and fake alike", CARDINAL,
+            "GANs with Data Augmentations Learned For Medical Data", CARDINAL,
         )
 
         # --- the transform: a real image plus the Viewmaker's perturbation

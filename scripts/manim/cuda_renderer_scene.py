@@ -53,7 +53,7 @@ class CudaRenderer(Scene):
     def construct(self):
         chrome = header(
             self, "cuda renderer",
-            "one thread block per tile: test, count, pack, blend", SLATE,
+            "a gpu renderer that holds two million overlapping circles in draw order", SLATE,
         )
 
         # ------------------------------------------------------------------

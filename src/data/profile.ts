@@ -13,7 +13,7 @@ export const profile = {
   facts: [
     { label: "currently", value: "member of technical staff @ accordance" },
     { label: "education", value: "just finished b.s & m.s in cs @ stanford" },
-    { label: "happiest", value: "volleyball, journaling" },
+    { label: "hobbies", value: "volleyball, journaling" },
   ] as Fact[],
 };
 

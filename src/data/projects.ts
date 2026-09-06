@@ -43,9 +43,9 @@ export const projects: Project[] = [
     slug: "post2vid",
     name: "Post2Vid",
     summary:
-      "an x account that turns any paper, article, or technical question into a narrated animated video",
+      "an x account that turns any paper, article, or technical question into a narrated animated video — built with Yahli Hazan",
     description: [
-      "Built with Yahli Hazan for the 2026 SpaceXAI hackathon, where it finished top 6.",
+      "Built for the 2026 SpaceXAI hackathon, where it finished top 6.",
       "Quote-tweet any paper, article, or technical question at @Post2Vid and it replies with an animated explainer video.",
       "A poller classifies the source, and a render worker storyboards it with Grok, generates Manim scenes, and narrates them with xAI text-to-speech.",
       "Quality loops statically validate generated scene code, repair render failures, and review frames by vision before publishing.",
@@ -53,8 +53,8 @@ export const projects: Project[] = [
     stack: ["manim", "python", "node", "supabase", "grok", "ffmpeg"],
     year: "2026",
     links: [
-      { label: "x account", href: "https://x.com/post2vid" },
       { label: "code", href: "https://github.com/tnguyen2002/post2vid" },
+      { label: "X", href: "https://x.com/post2vid" },
       {
         label: "post",
         href: "https://x.com/t0m_win/status/2086281753854140825",
@@ -78,10 +78,9 @@ export const projects: Project[] = [
     ],
     stack: ["yolov8", "python", "next.js", "modal", "ffmpeg", "ocr"],
     year: "2026",
-    biteSized: true,
     links: [
-      { label: "website", href: "https://distilled.gg" },
       { label: "code", href: "https://github.com/tnguyen2002/distilled.gg" },
+      { label: "website", href: "https://distilled.gg" },
       {
         label: "dataset",
         href: "https://huggingface.co/datasets/tnguyen2002/overwatch2-killfeed-rows",
@@ -97,33 +96,12 @@ export const projects: Project[] = [
     ),
   },
   {
-    slug: "blinkybird",
-    name: "BlinkyBird",
-    summary:
-      "flappy bird you play by blinking — mediapipe reads your eyes through the webcam",
-    description: [
-      "A Flappy Bird clone controlled entirely by blinking: MediaPipe Face Mesh tracks the eye landmarks each frame and the eye aspect ratio decides when the bird flaps.",
-      "Calibrates per player before the round — three passes of open-eye baseline and deliberate blinks set the threshold — with a cooldown so one blink is one flap, and a picture-in-picture camera preview while you play.",
-    ],
-    stack: ["python", "mediapipe", "opencv", "pygame"],
-    year: "2026",
-    biteSized: true,
-    // TODO(tom): the repo is private, so no [code] link — a 404 is worse than
-    // no link. Make tnguyen2002/blinkybird public and this becomes:
-    //   { label: "code", href: "https://github.com/tnguyen2002/blinkybird" }
-    links: [],
-    visual: video(
-      "blinkybird",
-      "six mediapipe landmarks per eye, the eye aspect ratio collapsing through a per-player threshold, and that crossing flapping the bird"
-    ),
-  },
-  {
     slug: "gandalf-md",
     name: "GANDALF-MD",
     summary:
-      "gan training that learns its own augmentations for scarce medical imaging data",
+      "gan training that learns its own augmentations for scarce medical imaging data — built with Xiluo He",
     description: [
-      "Trained StyleGAN2 on small medical imaging datasets using learned augmentations instead of hand-picked ones, with Xiluo He.",
+      "Trained StyleGAN2 on small medical imaging datasets using learned augmentations instead of hand-picked ones.",
       "Replaced DiffAugment's fixed color/translation/cutout chain with a Viewmaker network trained on the same data, so the augmentation applied to reals and fakes is learned rather than chosen by hand.",
       "Showed the synthetic images help downstream: a SimCLR + ResNet-18 classifier trained on reals plus generated images raised retinal accuracy from 0.33 to 0.58.",
     ],
@@ -147,11 +125,11 @@ export const projects: Project[] = [
   },
   {
     slug: "pathology-wsi",
-    name: "Pathology WSI Embeddings via Multimodal Language Guided Self-Supervision",
+    name: "PathZero",
     summary:
-      "language-guided self-supervised embeddings for whole-slide pathology images",
+      "language-guided self-supervised embeddings for whole-slide pathology images — built with Ekin Tiu",
     description: [
-      "Used unstructured pathology reports as the supervisory signal for learning whole-slide image embeddings, with Ekin Tiu.",
+      "Used unstructured pathology reports as the supervisory signal for learning whole-slide image embeddings.",
       "Built a CLIP-style contrastive pretraining pipeline over 1,401 TCGA slide and report pairs, with a token-guided co-attention module that lets a text query produce a slide-level attention heatmap.",
       "In-domain pretraining lifted linear-probe AUROC on 5-way disease classification from 0.79 (CLIP weights) to 0.82 on a held-out set of 561 slides, and enabled zero-shot classification from text queries.",
     ],
@@ -177,9 +155,8 @@ export const projects: Project[] = [
     slug: "trainium-conv",
     name: "AWS Trainium Convolutions",
     summary:
-      "a fused convolution + max-pool kernel for the aws trainium accelerator",
+      "a fused convolution + max-pool kernel for the aws trainium accelerator — built with Stanley Yang",
     description: [
-      "Built with Stanley Yang.",
       "Wrote a fused convolution + max-pool kernel for the AWS Trainium NeuronCore in NKI.",
       "Expressed each filter tap as a 128×128 matmul on the tensor engine, accumulating all taps for an output row in PSUM before touching SBUF.",
       "Loaded and pre-transposed the weights into SBUF once, tiled the input into row bands so each band is read a single time, and applied bias and 2×2 max-pool on chip so the output is written to HBM exactly once.",
@@ -198,9 +175,8 @@ export const projects: Project[] = [
     slug: "cuda-renderer",
     name: "Simple CUDA Renderer",
     summary:
-      "a gpu renderer that holds two million overlapping circles in draw order",
+      "a gpu renderer that holds two million overlapping circles in draw order — built with Stanley Yang",
     description: [
-      "Built with Stanley Yang.",
       "A CUDA renderer for scenes of up to 2 million semi-transparent circles, over 30x faster than the sequential CPU renderer on 100k-circle scenes.",
       "Parallelized over screen tiles instead of circles: a 32×32 grid with one 256-thread block per tile, so every pixel has a single writer and the hot path has no atomics or locks.",
       "Each block streams circles in batches of 256, tests one per thread against its tile, and runs a shared-memory exclusive scan to pack the hits into a list that stays in draw order, removing the need for a sort.",
@@ -239,6 +215,24 @@ export const projects: Project[] = [
     visual: video(
       "felix",
       "the real capture of felix outlining facelets, one sampled rgb matched by ciede2000 to the nearest cube colour, the face rebuilt from those, and the solution that falls out"
+    ),
+  },
+  {
+    slug: "blinkybird",
+    name: "BlinkyBird",
+    summary:
+      "flappy bird you play by blinking — mediapipe reads your eyes through the webcam",
+    description: [
+      "A Flappy Bird clone controlled entirely by blinking: MediaPipe Face Mesh tracks the eye landmarks each frame and the eye aspect ratio decides when the bird flaps.",
+      "Calibrates per player before the round — three passes of open-eye baseline and deliberate blinks set the threshold — with a cooldown so one blink is one flap, and a picture-in-picture camera preview while you play.",
+    ],
+    stack: ["python", "mediapipe", "opencv", "pygame"],
+    year: "2026",
+    biteSized: true,
+    links: [{ label: "code", href: "https://github.com/tnguyen2002/blinkybird" }],
+    visual: video(
+      "blinkybird",
+      "six mediapipe landmarks per eye, the eye aspect ratio collapsing through a per-player threshold, and that crossing flapping the bird"
     ),
   },
   {

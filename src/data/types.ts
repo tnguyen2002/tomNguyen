@@ -28,7 +28,7 @@ export type LinkLabel =
   | "dataset"
   | "model"
   /** The project's own X account, where the project is the account. */
-  | "x account"
+  | "X"
   /** A post about the project, as opposed to the project itself — the launch
    *  or result announcement rather than the thing it announces. */
   | "post";

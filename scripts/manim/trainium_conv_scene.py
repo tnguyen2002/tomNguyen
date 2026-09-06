@@ -56,7 +56,7 @@ class Trainium(Scene):
     def construct(self):
         chrome = header(
             self, "trainium conv",
-            "load once, compute on chip, store once", TEAL,
+            "a fused convolution + max-pool kernel for the aws trainium accelerator", TEAL,
         )
 
         # ------------------------------------------------------------------
@@ -85,7 +85,7 @@ class Trainium(Scene):
         taps = grid(FH, FW, 0.30, FILL, MUTED).move_to([-2.5, 0.10, 0])
         taps_cap = label("filter taps", 17, MUTED).next_to(taps, DOWN, buff=0.14)
         band = grid(BAND_ROWS, BAND_COLS).move_to([-0.3, 0.10, 0])
-        band_cap = label("1  load rows", 17, MUTED).next_to(band, DOWN, buff=0.14)
+        band_cap = label("1. load rows", 17, MUTED).next_to(band, DOWN, buff=0.14)
 
         self.play(
             TransformFromCopy(w_stack[0], taps), FadeIn(taps_cap),
@@ -99,7 +99,7 @@ class Trainium(Scene):
                              fill_opacity=0).move_to([1.75, 0.58, 0])
         psum_fill = Rectangle(width=0.001, height=0.30, stroke_width=0,
                               fill_color=TEAL, fill_opacity=0.9).align_to(psum_box, LEFT).set_y(0.58)
-        psum_cap = label("2  matmul per tap, summed", 17, TEAL).next_to(psum_box, UP, buff=0.10).align_to(psum_box, RIGHT)
+        psum_cap = label("2. matmul per tap, summed", 17, TEAL).next_to(psum_box, UP, buff=0.10).align_to(psum_box, RIGHT)
         to_psum = Arrow(band.get_corner(UR) + DOWN * 0.15, psum_box.get_left(), buff=0.06,
                         color=TEAL, stroke_width=3, max_tip_length_to_length_ratio=0.3)
         self.play(FadeIn(psum_box), FadeIn(psum_cap), GrowArrow(to_psum), run_time=0.30)
@@ -130,7 +130,7 @@ class Trainium(Scene):
 
         # The finished sum is one output row; bias added on the way down.
         out = grid(OUT_ROWS, OUT_COLS).move_to([1.75, -0.32, 0])
-        out_cap = label("3  + bias", 17, MUTED).next_to(out, DOWN, buff=0.10)
+        out_cap = label("3. + bias", 17, MUTED).next_to(out, DOWN, buff=0.10)
         rows = [VGroup(*[cell_at(out, OUT_COLS, r, c) for c in range(OUT_COLS)]) for r in range(OUT_ROWS)]
         for r in rows:
             r.set_fill(TEAL, opacity=0.0)
@@ -147,14 +147,14 @@ class Trainium(Scene):
         # 2x2 max-pool, still in SBUF: the tile shrinks before it ever leaves.
         pooled = grid(OUT_ROWS // 2 + 0, OUT_COLS // 2, CELL, TEAL, "#FFFFFF")
         pooled.set_fill(TEAL, opacity=0.9).move_to([1.75, -1.62, 0])
-        pool_cap = label("4  max-pool", 17, MUTED).next_to(pooled, LEFT, buff=0.12)
+        pool_cap = label("4. max-pool", 17, MUTED).next_to(pooled, LEFT, buff=0.12)
         self.play(TransformFromCopy(out, pooled), FadeIn(pool_cap), run_time=0.45)
 
         # One store.
         store = arrow(sbuf[0].get_right() + LEFT * 0.02, hbm_out[0].get_left(), TEAL)
         store.set_y(pooled.get_y())
         result = pooled.copy().move_to([5.25, pooled.get_y(), 0])
-        res_cap = label("5  store once", 17, TEAL).next_to(result, DOWN, buff=0.12)
+        res_cap = label("5. store once", 17, TEAL).next_to(result, DOWN, buff=0.12)
         self.play(GrowArrow(store), run_time=0.25)
         self.play(TransformFromCopy(pooled, result), FadeIn(res_cap), run_time=0.40)
 

@@ -18,7 +18,7 @@ from house import FILL, LINE, MUTED, PLUM, arrow, box, close, header, label  # n
 
 class PathologyWsi(Scene):
     def construct(self):
-        chrome = header(self, "pathology wsi", "text-guided patches, pooled into one slide embedding", PLUM)
+        chrome = header(self, "PathZero", "language-guided self-supervised embeddings for whole-slide pathology images", PLUM)
 
         slide = box(2.6, 2.0, "#FFFFFF", LINE, radius=0.06).move_to(LEFT * 4.7 + DOWN * 0.5)
         # Tissue, loosely: an empty white rectangle reads as a missing image.

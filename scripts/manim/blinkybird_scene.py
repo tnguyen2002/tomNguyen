@@ -64,7 +64,7 @@ def bird_glyph(r=0.20):
 
 class BlinkyBird(Scene):
     def construct(self):
-        chrome = header(self, "BlinkyBird", "blink to flap — the threshold is calibrated per player", ROSE)
+        chrome = header(self, "BlinkyBird", "flappy bird you play by blinking — mediapipe reads your eyes through the webcam", ROSE)
 
         # --- the webcam sees a face; MediaPipe gives six points per eye
         face = face_glyph().move_to([-5.05, -0.55, 0])
