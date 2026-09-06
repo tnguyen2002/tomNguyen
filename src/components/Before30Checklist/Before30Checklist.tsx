@@ -1,57 +1,57 @@
+import { checklist, checklistNote } from "../../data/checklist";
+import { cn } from "../../lib/cn";
+import { accentFor } from "../../lib/accent";
+
 function Before30Checklist() {
-  const checklist = [
-    { text: "Start a company", done: false },
-    {
-      text: "Give a singing/acoustic concert to my friends with at least 5 songs",
-      done: false,
-    },
-    { text: "Go to Europe", done: false }, // example struck through
-    { text: "Japan", done: true },
-    { text: "Buy my entire extended family a meal", done: true },
-    { text: "Go to 1 World Cup game", done: false },
-    { text: "10k YouTube subscribers", done: false },
-    { text: "Learn how to play an anime opening on piano", done: false },
-    { text: "Go to an F1 race", done: false },
-    {
-      text: "Write some form of literature be it blog, book, or poetry",
-      done: false,
-    },
-    { text: "Do a card tricks magic show for my friends", done: false },
-    { text: "Run a marathon", done: false },
-    { text: "Write a language model completely from scratch", done: false },
-    { text: "Buy my mom and dad an all expenses paid vacation", done: false },
-    { text: "Become a millionaire?", done: false },
-    { text: "Develop a game, be it platform or whatever", done: false },
-    { text: "Deploy an app on the App Store as a side hustle", done: false },
-    { text: "Be an extra in a movie releasing in theaters", done: false },
-    { text: "Create a short film", done: false },
-    { text: "Learn how to do a handstand push up", done: false },
-    { text: "Play volleyball in a foreign country with natives", done: true },
-    { text: "Average sub 15sec on 3x3 (current avg: 23)", done: false },
-    {
-      text: "Fold an origami collection with atleast 50 different works",
-      done: false,
-    },
-    { text: "Join the 1000 lbs club", done: false },
-    { text: "Do the splits", done: false },
-    { text: "12% body fat", done: false },
-  ];
+  const doneCount = checklist.filter((item) => item.done).length;
 
   return (
-    <div className="flex flex-col w-full items-start text-left">
-      <div className="text-xl mb-2">
-        {checklist.map((item, idx) => (
-          <div key={idx} className="mb-1 sm:mb-2 flex items-center">
-            <span className="font-bold mr-2">{idx + 1}.</span>
-            <span className={item.done ? "line-through text-gray-400" : ""}>
-              {item.text.toLowerCase()}
-            </span>
-          </div>
-        ))}
-        <div className="mt-2 sm:mt-4 text-gray-500 italic text-xs sm:text-base">
-          still figuring out the rest, created in 8/2025
-        </div>
+    <div className="w-full max-w-3xl">
+      {/* No heading here — the app's own title ("Reminders", with the
+          "30 under 30" subtitle, set in data/apps.tsx) is the page h1, and
+          repeating it stacked three near-identical headings on mobile. */}
+      <div className="flex flex-wrap items-baseline justify-between gap-3">
+        <span className="meta">
+          {doneCount} / {checklist.length} done
+        </span>
       </div>
+
+      <ol className="mt-6 grid grid-cols-2 gap-x-10">
+        {checklist.map((item, idx) => (
+          <li
+            key={idx}
+            className="flex items-baseline gap-3 border-b border-line py-2.5"
+          >
+            {/* Done entries get a tick in the item's own hue instead of a grey
+                strike-through — the list was rendering as one long grey block. */}
+            {item.done ? (
+              <span
+                aria-hidden="true"
+                style={{ color: accentFor(idx).fg }}
+                className="font-mono text-[0.6875rem] leading-none"
+              >
+                &#10003;
+              </span>
+            ) : (
+              <span className="font-mono text-[0.6875rem] tabular-nums text-fg-subtle">
+                {String(idx + 1).padStart(2, "0")}
+              </span>
+            )}
+            <span
+              className={cn(
+                "text-[0.875rem] leading-relaxed",
+                item.done ? "text-fg-subtle line-through" : "text-fg-muted"
+              )}
+            >
+              {item.text}
+            </span>
+          </li>
+        ))}
+      </ol>
+
+      <p className="mt-6 max-w-measure text-[0.875rem] leading-relaxed text-fg-subtle">
+        {checklistNote}
+      </p>
     </div>
   );
 }

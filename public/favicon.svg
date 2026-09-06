@@ -1,0 +1,14 @@
+<!--
+  Tab icon: the rocket emoji, drawn as text rather than traced to paths.
+
+  A <text> node means the browser renders it with the platform's own colour
+  emoji font, so it stays crisp at any size and the file stays under 300 bytes —
+  a traced version of this glyph is tens of kilobytes of gradients.
+
+  The raster fallbacks (favicon.ico, icon-192, icon-512, apple-touch-icon) are
+  screenshots of the same glyph, so a browser that ignores SVG favicons still
+  gets the identical rocket.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <text y=".9em" font-size="90">🚀</text>
+</svg>

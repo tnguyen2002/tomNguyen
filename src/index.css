@@ -1,15 +1,223 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+/* @font-face lives in public/index.html, not here — css-loader resolves
+   root-absolute url("/fonts/...") against the repo root and fails the build.
+   See the comment above the preload tags in that file. */
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-canvas font-sans text-fg antialiased;
+    text-rendering: optimizeLegibility;
+    /* cv11 gives Geist its single-storey "a". */
+    font-feature-settings: "cv11";
+
+    /* Two very low-alpha washes behind the top of the page. Flat canvas is
+       what made this read as a diagram; these give it somewhere to sit
+       without adding a pattern or a texture. Fixed so they stay put as the
+       content scrolls over them. */
+    background-image:
+      radial-gradient(
+        48rem 28rem at 12% -8%,
+        rgba(184, 80, 47, 0.07),
+        transparent 65%
+      ),
+      radial-gradient(
+        40rem 24rem at 88% -12%,
+        rgba(154, 107, 18, 0.05),
+        transparent 65%
+      );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme(colors.accent.DEFAULT);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: theme(colors.accent.wash);
+    color: theme(colors.accent.hover);
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+@layer components {
+  /* Desktop wallpaper: an abstract dusk, composed the way a stock desktop
+     picture is — a directional light source, broad fields lit relative to it,
+     a band sweeping underneath, a vignette, and grain over the lot. See
+     Wallpaper.tsx for why the motion is transform-only. */
+  .wallpaper {
+    overflow: hidden;
+    background-color: #0d0913;
+    background-image: linear-gradient(168deg, #33223a 0%, #1d1428 46%, #0c0812 100%);
+  }
+
+  .wallpaper-field {
+    position: absolute;
+    /* Screen, not normal: over a dark base, normal blending muddies these into
+       brown haze, while screen lets them read as light. It is the difference
+       between a stain and a glow. */
+    mix-blend-mode: screen;
+    will-change: transform;
+    /* Long, offset durations so the fields never resynchronise into a pulse. */
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+
+  /* The light source. Everything else is lit relative to this one warm bloom;
+     the old wallpaper had four competing lights and read as haze because of it. */
+  .wallpaper-field-1 {
+    top: -34%;
+    left: -24%;
+    width: 92%;
+    height: 104%;
+    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(226, 132, 54, 0.62), transparent 70%);
+    animation-name: drift-a;
+    animation-duration: 44s;
+  }
+
+  /* Rose opposite it, so the top of the frame reads as sky. */
+  .wallpaper-field-2 {
+    top: -40%;
+    right: -26%;
+    width: 84%;
+    height: 104%;
+    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(188, 68, 116, 0.52), transparent 70%);
+    animation-name: drift-b;
+    animation-duration: 57s;
+  }
+
+  /* The cool counterweight, low and right. Without a second temperature the
+     whole frame is one hue and reads as a stain rather than a scene. */
+  .wallpaper-field-3 {
+    bottom: -44%;
+    right: -18%;
+    width: 98%;
+    height: 112%;
+    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(58, 82, 170, 0.50), transparent 70%);
+    animation-name: drift-c;
+    animation-duration: 49s;
+  }
+
+  /* One wide band sweeping under the light, the way the flowing shapes in a
+     stock desktop picture do. Rotated, so it never reads as a horizon line. */
+  .wallpaper-ribbon {
+    position: absolute;
+    left: -25%;
+    right: -25%;
+    top: 22%;
+    height: 62%;
+    mix-blend-mode: screen;
+    background: radial-gradient(ellipse 46% 44% at 50% 50%, rgba(216, 126, 82, 0.34), transparent 72%);
+    will-change: transform;
+    animation: sweep 63s ease-in-out infinite alternate;
+  }
+
+  /* Sinks the corners, so the window has something to sit on. */
+  .wallpaper-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 78% 72% at 48% 40%, transparent 40%, rgba(5, 4, 8, 0.55) 100%);
+  }
+
+  /* Dither, not decoration. A full-screen gradient this dark bands into visible
+     steps on an 8-bit display; a few percent of tiled fractal noise breaks the
+     steps up. It is the single thing that most separates this from a CSS
+     gradient, because real desktop pictures are photographic and carry grain. */
+  .wallpaper-grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23g)'/></svg>");
+  }
+
+  @keyframes drift-a {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to { transform: translate3d(10vmax, 7vmax, 0) scale(1.12); }
+  }
+  @keyframes drift-b {
+    from { transform: translate3d(0, 0, 0) scale(1.08); }
+    to { transform: translate3d(-9vmax, 10vmax, 0) scale(0.95); }
+  }
+  @keyframes drift-c {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to { transform: translate3d(-12vmax, -8vmax, 0) scale(1.14); }
+  }
+  @keyframes sweep {
+    from { transform: rotate(-11deg) translate3d(0, 0, 0); }
+    to { transform: rotate(-7deg) translate3d(0, -5%, 0); }
+  }
+
+  /**
+   * The window's scrollbar.
+   *
+   * Left to the browser, the track paints its own grey, which sits as a stripe
+   * of the wrong colour down the side of a translucent panel. A transparent
+   * track lets the panel show through, so the only thing drawn is the thumb.
+   *
+   * `background-clip: content-box` with a transparent border insets the thumb
+   * into a floating pill instead of a bar wedged against the edge.
+   */
+  [data-window-scroll] {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(27, 24, 22, 0.25) transparent;
+  }
+
+  [data-window-scroll]::-webkit-scrollbar {
+    width: 11px;
+  }
+
+  [data-window-scroll]::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  [data-window-scroll]::-webkit-scrollbar-thumb {
+    background-color: rgba(27, 24, 22, 0.22);
+    background-clip: content-box;
+    border: 3px solid transparent;
+    border-radius: 9999px;
+  }
+
+  [data-window-scroll]::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(27, 24, 22, 0.36);
+  }
+
+  /* Dock icons are a fixed size — no magnification, so no transform, no
+     transition, and nothing to re-rasterise. Hover feedback is the tooltip. */
+  .dock-tile {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  /* Metadata: index numerals, dates, counts, stack lists. */
+  .meta {
+    @apply font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-fg-subtle;
+  }
+
+  /* The one link treatment used across the site. */
+  .link {
+    @apply text-accent underline decoration-accent/25 decoration-1 underline-offset-[3px]
+      transition-colors hover:decoration-accent motion-reduce:transition-none;
+  }
+}
+
+/* Kills CSS transitions and scroll animation. Note this does NOT stop video
+   autoplay — that is gated in JS via usePrefersReducedMotion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
