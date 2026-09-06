@@ -11,7 +11,7 @@ export const profile = {
   name: "Tom Nguyen",
   email: "tomtkkn@gmail.com",
   facts: [
-    { label: "currently", value: "Member of Technical Staff @ Accordance" },
+    { label: "currently", value: "member of technical staff @ accordance" },
     { label: "education", value: "just finished b.s & m.s in cs @ stanford" },
     { label: "happiest", value: "volleyball, journaling" },
   ] as Fact[],
