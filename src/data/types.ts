@@ -115,8 +115,6 @@ export interface Screening {
   /** Poster filename stem: public/media/watch/<slug>.jpg */
   slug: string;
   title: string;
-  /** Director, creator, or whatever is worth naming under the title. */
-  by?: string;
   kind: "movie" | "show";
   note?: string;
   /** Omit until a poster exists — the tile falls back to a typographic one. */

@@ -47,7 +47,6 @@ function Watch() {
                 key={item.slug}
                 ratio="portrait"
                 title={item.title}
-                subtitle={item.by}
                 note={item.note}
                 cover={item.cover}
                 href={item.href}

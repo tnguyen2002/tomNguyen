@@ -95,7 +95,7 @@ export const APPS: DockApp[] = [
   {
     id: "watch",
     label: "Netflix",
-    title: "movies & shows",
+    subtitle: "movies & shows",
     glyph: "netflix",
     accentIndex: 0,
     // Real app icon is the red mark on flat black; the near-black tile also

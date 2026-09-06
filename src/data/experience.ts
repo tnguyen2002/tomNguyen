@@ -7,8 +7,8 @@ export const experience: ExperienceItem[] = [
         title: "Member of Technical Staff",
         date: "September 2025 – Present",
         description: [
-            "Architected an agentic pipeline that automates tax exemption certificate review, checking them against the governing state form's requirements, underlying transaction, and producing binary determination with a corresponding defense memo.",
             "Developed the billing infrastructure 0 to 1, creating Stripe and Zoho CRM integrations, permission-based access control, and automatic invoicing, processing over $100K in transactions and supporting over 2K users.",
+            "Architected an agentic pipeline that automates tax exemption certificate review, checking them against the governing state form's requirements, underlying transaction, and producing binary determination with a corresponding defense memo.",
             "Engineered the internal admin platform that oversees user management, billing, usage dashboards, and a CRM-backed view of customer engagements.",
             "Built developer infrastructure around the internal admin platform,  including per-PR preview environments on Kubernetes and containerized benchmark runners",
             "Created an agentic Word document integration that lets the agent read, edit, and create documents directly, along with a companion in-app editor and a PDF viewer that opens from citations, attachments, and file storage.",
@@ -21,7 +21,7 @@ export const experience: ExperienceItem[] = [
         date: "June 2024 – September 2024",
         description: [
             "Spearheaded development of a full-stack application that supports Amazon inspections of dangerous goods for over 10,000 packages daily, increasing operational efficiency, utilizing Kotlin, Java, TypeScript, and DynamoDB.",
-            "Authored 30+ unit and integration tests covering API endpoints and front-end components using Jest, Jqwik, and React-testing, contributing to error-free deployments in multiple environments.",
+            "Authored unit and integration tests covering API endpoints and front-end components using Jest, Jqwik, and React-testing, contributing to error-free deployments in multiple environments.",
             "Achieved 1st place at internal Amazon team hackathon, fine-tuned Flan-Base LLM using PyTorch and Hugging Face for a downstream classification task, competing against 30+ full-time engineers; given but declined full-time return offer.",
         ],
     },
