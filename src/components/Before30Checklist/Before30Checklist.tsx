@@ -1,30 +1,57 @@
 import { checklist, checklistNote } from "../../data/checklist";
+import { cn } from "../../lib/cn";
+import { accentFor } from "../../lib/accent";
 
 function Before30Checklist() {
   const doneCount = checklist.filter((item) => item.done).length;
 
   return (
-    <div className="flex flex-col w-full items-start text-left">
-      <div className="text-xl mb-2">
-        <div className="mb-3 text-gray-400 text-sm tabular-nums">
+    <div className="w-full max-w-3xl">
+      {/* No heading here — the app's own title ("Reminders", with the
+          "30 under 30" subtitle, set in data/apps.tsx) is the page h1, and
+          repeating it stacked three near-identical headings on mobile. */}
+      <div className="flex flex-wrap items-baseline justify-between gap-3">
+        <span className="meta">
           {doneCount} / {checklist.length} done
-        </div>
+        </span>
+      </div>
+
+      <ol className="mt-6 grid grid-cols-2 gap-x-10">
         {checklist.map((item, idx) => (
-          <div key={idx} className="mb-1 sm:mb-2 flex items-center">
-            <span className="font-bold mr-2">{idx + 1}.</span>
+          <li
+            key={idx}
+            className="flex items-baseline gap-3 border-b border-line py-2.5"
+          >
+            {/* Done entries get a tick in the item's own hue instead of a grey
+                strike-through — the list was rendering as one long grey block. */}
+            {item.done ? (
+              <span
+                aria-hidden="true"
+                style={{ color: accentFor(idx).fg }}
+                className="font-mono text-[0.6875rem] leading-none"
+              >
+                &#10003;
+              </span>
+            ) : (
+              <span className="font-mono text-[0.6875rem] tabular-nums text-fg-subtle">
+                {String(idx + 1).padStart(2, "0")}
+              </span>
+            )}
             <span
-              className={`lowercase ${
-                item.done ? "line-through text-gray-400" : ""
-              }`}
+              className={cn(
+                "text-[0.875rem] leading-relaxed",
+                item.done ? "text-fg-subtle line-through" : "text-fg-muted"
+              )}
             >
               {item.text}
             </span>
-          </div>
+          </li>
         ))}
-        <div className="mt-2 sm:mt-4 text-gray-500 italic text-xs sm:text-base">
-          {checklistNote}
-        </div>
-      </div>
+      </ol>
+
+      <p className="mt-6 max-w-measure text-[0.875rem] leading-relaxed text-fg-subtle">
+        {checklistNote}
+      </p>
     </div>
   );
 }

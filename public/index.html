@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#FCFCFD" />
 
-    <title>tom nguyen — swe</title>
+    <title>tom nguyen</title>
     <meta
       name="description"
       content="tom nguyen — software engineer working on ml and systems. stanford b.s & m.s in cs. projects across medical imaging gans, cuda, aws trainium kernels, and computer vision."
@@ -15,7 +15,7 @@
     <!-- Open Graph. og:image must be absolute — most scrapers reject relative URLs. -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tomnguyen.ai/" />
-    <meta property="og:title" content="tom nguyen — swe" />
+    <meta property="og:title" content="tom nguyen" />
     <meta
       property="og:description"
       content="software engineer working on ml and systems. stanford b.s & m.s in cs."
@@ -25,15 +25,15 @@
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="tom nguyen — swe, ml + systems, b.s & m.s in cs @ stanford"
+      content="tom nguyen, ml + systems, b.s & m.s in cs @ stanford"
     />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@t0m_win" />
 
-    <link rel="icon" href="%PUBLIC_URL%/favicon.svg" type="image/svg+xml" />
-    <link rel="alternate icon" href="%PUBLIC_URL%/favicon.ico" sizes="32x32" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.svg?v=2" type="image/svg+xml" />
+    <link rel="alternate icon" href="%PUBLIC_URL%/favicon.ico?v=2" sizes="32x32" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png?v=2" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
     <!--
@@ -47,17 +47,18 @@
       CORS mode, and omitting it causes the file to be downloaded twice.
       Bump the -v1 suffix to bust caches; public/ files are not hashed.
     -->
-    <link
-      rel="preload"
-      href="%PUBLIC_URL%/fonts/inter-variable-latin-v1.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    <!-- Geist is no longer preloaded: the font stack puts the system UI font
+         first, so on Apple devices (San Francisco) these files are never
+         fetched at all. They stay declared as the non-Apple fallback and load
+         on demand there. -->
     <style>
+      /* Geist is the non-Apple fallback only — on macOS and iOS the font stack
+         resolves to San Francisco first and this is never fetched. Geist Mono
+         is gone: the site uses one family throughout, matching macOS, which has
+         no monospace in its UI chrome. */
       @font-face {
-        font-family: "Inter Variable";
-        src: url("/fonts/inter-variable-latin-v1.woff2") format("woff2");
+        font-family: "Geist";
+        src: url("/fonts/geist-variable-latin-v1.woff2") format("woff2");
         font-weight: 100 900;
         font-style: normal;
         font-display: swap;
@@ -67,7 +68,7 @@
   <body>
     <noscript>
       tom nguyen — software engineer working on ml and systems. stanford b.s &amp;
-      m.s in cs. reach me at tomthuckynguyen@gmail.com.
+      m.s in cs. reach me at tomtkkn@gmail.com.
     </noscript>
     <div id="root"></div>
   </body>

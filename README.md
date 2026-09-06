@@ -4,7 +4,7 @@ Website:
 [tomnguyen.ai](https://tomnguyen.ai/)
 
 Email:
-tomthuckynguyen@gmail.com
+tomtkkn@gmail.com
 
 ---
 
@@ -20,7 +20,8 @@ npx tsc --noEmit # typecheck
 ## adding a project
 
 Everything lives in `src/data/`. To add a project, append to `src/data/projects.ts`
-— no component changes needed. Rows alternate media side automatically.
+— no component changes needed. It shows up in the index inside the Projects app,
+and its accent hue is assigned by position.
 
 ```ts
 {
@@ -96,7 +97,7 @@ Check with `du -sh public/media`.
 > Raw `.mov` recordings are gitignored on purpose — a 30-second 4K capture is
 > 200+ MB and git would keep it forever. Only the encoded mp4 gets committed.
 
-## bookshelf, podcasts, substack
+## bookshelf and podcasts
 
 Same idea — data only, in `src/data/`.
 
@@ -129,11 +130,54 @@ When a cover exists the caption shows title + author; without one the tile
 carries the title and the caption shows just the author, so nothing prints
 twice.
 
-**Substack** (`substack.ts`) holds `url`, `intro`, and a `posts` array. Empty
-`posts` and the section renders just the intro line and the subscribe link —
-useful if you'd rather not keep a post list in sync.
+> The books are still `TODO(tom)` placeholders; the podcasts are real.
 
-> Everything in these three files is currently a `TODO(tom)` placeholder.
+To add a whole new section, add an entry to `src/data/apps.tsx` — it appears in
+the dock and on the phone home screen automatically.
+
+## design
+
+The site is a **macOS desktop**. A wallpaper, a menu bar with a live clock, and
+a dock; clicking a dock app swaps the whole page. Phones get the matching joke
+instead of a broken one — an iOS-style home screen of the same icons.
+
+- **Shell.** `App.tsx` holds one piece of state: which app is open (`null` is
+  the desktop). `components/Desktop/` has the menu bar, dock, desktop panel and
+  phone home screen. `data/apps.tsx` is the registry — id, label, glyph, hue
+  and content — and is the only file to touch to add a section.
+- **One h1, always.** Each app is a page, so its title is the h1; with nothing
+  open, the name is. `App.test.tsx` asserts there is exactly one.
+- **Icons** are drawn in `AppIcon.tsx` as strokes on a 24-unit grid, on a
+  graded squircle tile. `vectorEffect="non-scaling-stroke"` keeps the stroke
+  from thickening under dock magnification.
+- **Colour.** `lib/accent.ts` holds seven muted hues. Each project owns one, so
+  the accent changes as you browse rather than seven competing; each dock app
+  owns one too (indices hand-picked so neighbouring icons never match). All
+  seven clear 4.5:1 on the light surfaces.
+- **The wallpaper is a CSS gradient mesh**, not a photograph — nothing to ship
+  or licence, and it can be tuned dark enough for the white menu-bar and dock
+  text while the translucent white sheets still read as lit panels.
+- **`fg-subtle` carries 11–12px meta text**, so it has to clear the
+  normal-text contrast floor (4.8:1 on the light surface). A lighter grey looks
+  better in isolation and is unreadable at that size — don't lighten it.
+- **Motion.** A rise on open, dock magnification, hover states. Magnification
+  is gated on `prefers-reduced-motion`, as is everything else.
+
+### why index + detail for projects
+
+Five of the eight projects have no figure yet. Any layout that stacks them
+vertically puts five identical "demo coming soon" panels on screen at once;
+showing one project at a time removes that and gives the ones with real media
+the full pane. Revisit once every project has a figure.
+
+### testing notes
+
+`useMediaQuery` returns false without `matchMedia`, and jsdom has none — so
+`App` asks `(max-width: 767px)` rather than `(min-width: …)`. That means it
+defaults to the desktop shell instead of flashing the phone home screen on
+first paint, and it is why the tests exercise the dock rather than the home
+screen.
+
 
 ## notes
 
@@ -141,4 +185,8 @@ useful if you'd rather not keep a post list in sync.
   react-scripts detects Tailwind via `fs.existsSync` on that path, and it sets
   `postcssOptions.config: false`, so a `postcss.config.js` would be ignored.
 - Fonts are declared in `public/index.html`, not `src/index.css` — see the
-  comment there for why.
+  comment there for why. Both faces are latin-subset woff2, self-hosted, and
+  variable across 100–900, so it is one file each (~56 KB total).
+- No page-level horizontal scroll at 320px or 390px. The wallpaper is
+  `position: fixed`, so it is sized to the viewport rather than the
+  document — it will look like an overflow in a naive audit and is not one.

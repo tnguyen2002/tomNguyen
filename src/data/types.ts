@@ -23,7 +23,15 @@ export type LinkLabel =
   | "website"
   | "report"
   | "poster"
-  | "paper";
+  | "paper"
+  /** Published artefacts — a Hugging Face dataset or model card. */
+  | "dataset"
+  | "model"
+  /** The project's own X account, where the project is the account. */
+  | "x account"
+  /** A post about the project, as opposed to the project itself — the launch
+   *  or result announcement rather than the thing it announces. */
+  | "post";
 
 export interface ProjectLink {
   label: LinkLabel;
@@ -44,6 +52,10 @@ export interface Project {
   links: ProjectLink[];
   /** Defaults to { kind: "none" } when omitted. */
   visual?: ProjectVisual;
+  /** Files this project under the collapsible "Bite Sized" group in the index
+   *  nav. Purely an index concern — the article still renders in the feed in
+   *  its normal position. */
+  biteSized?: boolean;
 }
 
 export interface ExperienceItem {
@@ -84,6 +96,34 @@ export interface Book {
   href?: string;
 }
 
+/** Anything you listen to that is not a podcast. `kind` decides which row
+ *  it lands in inside the Spotify app. */
+export interface Track {
+  /** Cover filename stem: public/media/tracks/<slug>.jpg */
+  slug: string;
+  title: string;
+  artist: string;
+  kind: "song" | "soundtrack" | "album";
+  note?: string;
+  /** Omit until a cover file exists — the tile falls back to a typographic one. */
+  cover?: string;
+  href?: string;
+}
+
+/** Something you watched. `kind` decides which row it lands in. */
+export interface Screening {
+  /** Poster filename stem: public/media/watch/<slug>.jpg */
+  slug: string;
+  title: string;
+  /** Director, creator, or whatever is worth naming under the title. */
+  by?: string;
+  kind: "movie" | "show";
+  note?: string;
+  /** Omit until a poster exists — the tile falls back to a typographic one. */
+  cover?: string;
+  href?: string;
+}
+
 export interface Podcast {
   /** Cover filename stem: public/media/podcasts/<slug>.jpg */
   slug: string;
@@ -94,10 +134,3 @@ export interface Podcast {
   href?: string;
 }
 
-export interface SubstackPost {
-  title: string;
-  /** Free text, e.g. "mar 2026" — these are hand-maintained. */
-  date: string;
-  blurb?: string;
-  href: string;
-}

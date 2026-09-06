@@ -46,3 +46,5 @@ export const noVisual: ProjectVisual = { kind: "none" };
  */
 export const bookCover = (slug: string) => `/media/books/${slug}.jpg`;
 export const podcastCover = (slug: string) => `/media/podcasts/${slug}.jpg`;
+export const trackCover = (slug: string) => `/media/tracks/${slug}.jpg`;
+export const watchCover = (slug: string) => `/media/watch/${slug}.jpg`;

@@ -1,5 +1,6 @@
 import { cn } from "../../lib/cn";
 import type { CoverRatio } from "../../data/types";
+import type { Accent } from "../../lib/accent";
 import ExternalLink from "../ExternalLink/ExternalLink";
 
 const RATIO: Record<CoverRatio, string> = {
@@ -14,6 +15,9 @@ export interface CoverTileProps {
   cover?: string;
   href?: string;
   ratio: CoverRatio;
+  /** Tints the fallback jacket. Ignored when a real cover image exists — the
+   *  artwork should carry its own colour. */
+  accent?: Accent;
 }
 
 /**
@@ -23,12 +27,25 @@ export interface CoverTileProps {
  * than a broken image, so the grid reads as designed before any jacket images
  * exist — the same principle as the project media placeholders.
  */
-function CoverTile({ title, subtitle, note, cover, href, ratio }: CoverTileProps) {
+function CoverTile({
+  title,
+  subtitle,
+  note,
+  cover,
+  href,
+  ratio,
+  accent,
+}: CoverTileProps) {
   const art = (
     <div
+      style={
+        !cover && accent
+          ? { backgroundColor: accent.wash, borderColor: accent.ring }
+          : undefined
+      }
       className={cn(
-        "relative w-full overflow-hidden rounded-lg bg-neutral-50 ring-1 ring-neutral-900/5",
-        "transition-transform duration-300 ease-out-expo group-hover:-translate-y-1 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0",
+        "relative w-full overflow-hidden rounded-xl bg-surface shadow-soft ring-1 ring-line",
+        "transition-all duration-300 ease-out-expo group-hover:-translate-y-1 group-hover:shadow-lift motion-reduce:transition-none motion-reduce:group-hover:translate-y-0",
         RATIO[ratio]
       )}
     >
@@ -43,9 +60,11 @@ function CoverTile({ title, subtitle, note, cover, href, ratio }: CoverTileProps
       ) : (
         // Stands in for the jacket, so it carries the title the way a real
         // cover would — which is why the caption below drops it in this case.
-        <div className="absolute inset-0 flex flex-col justify-end gap-2 p-3">
-          <span className="h-px w-6 bg-rose-300" />
-          <span className="line-clamp-4 text-[11px] font-medium lowercase leading-snug text-neutral-600">
+        <div className="absolute inset-0 flex items-end p-3.5">
+          <span
+            style={accent ? { color: accent.fg } : undefined}
+            className="line-clamp-5 text-balance text-[0.875rem] font-medium leading-snug tracking-[-0.01em] text-fg"
+          >
             {title}
           </span>
         </div>
@@ -56,22 +75,22 @@ function CoverTile({ title, subtitle, note, cover, href, ratio }: CoverTileProps
   const caption = (
     <div className="mt-2.5">
       {cover && (
-        <div className="text-xs font-medium lowercase leading-snug text-neutral-800">
+        <div className="text-[0.8125rem] font-medium leading-snug text-fg">
           {title}
         </div>
       )}
       {subtitle && (
         <div
           className={cn(
-            "text-xs lowercase leading-snug",
-            cover ? "mt-0.5 text-neutral-400" : "font-medium text-neutral-800"
+            "text-[0.75rem] leading-snug",
+            cover ? "mt-0.5 text-fg-subtle" : "text-fg-subtle"
           )}
         >
           {subtitle}
         </div>
       )}
       {note && (
-        <div className="mt-1 line-clamp-2 text-xs lowercase leading-snug text-neutral-500">
+        <div className="mt-1 line-clamp-2 text-[0.75rem] leading-snug text-fg-subtle">
           {note}
         </div>
       )}

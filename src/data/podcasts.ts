@@ -1,28 +1,25 @@
 import type { Podcast } from "./types";
-// import { podcastCover } from "../lib/media";
+import { podcastCover } from "../lib/media";
 
 /**
- * TODO(tom): placeholders — replace with what you actually listen to.
+ * Artwork lives at public/media/podcasts/<slug>.jpg — square (1:1), 600px,
+ * under the 80 KB cover budget. These two came from Apple's podcast artwork
+ * CDN at 600x600.
  *
- * To add artwork: save a square image at public/media/podcasts/<slug>.jpg and
- * add `cover: podcastCover("<slug>")`. Podcast art is square (1:1); grabbing
- * it from the show's page at ~600px is plenty.
+ * `note` is optional — add a one-line take on any of these if you want one
+ * under the tile.
  */
 export const podcasts: Podcast[] = [
   {
     slug: "acquired",
     name: "Acquired",
     host: "Ben Gilbert & David Rosenthal",
-    note: "placeholder — swap for a real one",
+    cover: podcastCover("acquired"),
   },
   {
-    slug: "dwarkesh",
-    name: "Dwarkesh Podcast",
-    host: "Dwarkesh Patel",
-  },
-  {
-    slug: "lex-fridman",
-    name: "Lex Fridman Podcast",
-    host: "Lex Fridman",
+    slug: "how-i-built-this",
+    name: "How I Built This",
+    host: "Guy Raz",
+    cover: podcastCover("how-i-built-this"),
   },
 ];

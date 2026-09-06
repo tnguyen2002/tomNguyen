@@ -32,3 +32,6 @@ CLAUDE.md
 # raw screen recordings — encode to public/media/*.mp4 instead, never commit these
 *.mov
 /media-src
+
+# derived from the poster PDF — regenerate with scripts/manim/gandalf_md_assets.py
+/scripts/manim/assets

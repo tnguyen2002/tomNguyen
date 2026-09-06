@@ -10,9 +10,9 @@ function SocialLinks() {
           key={social.id}
           href={social.href}
           aria-label={social.label}
-          className="rounded-md p-1.5 text-rose-500 transition-colors hover:text-rose-600 motion-reduce:transition-none"
+          className="rounded-md p-2 text-fg-subtle transition-colors hover:bg-surface hover:text-fg motion-reduce:transition-none"
         >
-          <BrandIcon id={social.id} className="h-5 w-5" />
+          <BrandIcon id={social.id} className="h-[18px] w-[18px]" />
         </ExternalLink>
       ))}
     </nav>

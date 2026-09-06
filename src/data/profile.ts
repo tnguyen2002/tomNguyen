@@ -1,14 +1,20 @@
 import type { SocialLink } from "./types";
 
+/** One row of the specimen card under the masthead. Label is set in mono small
+ *  caps, value in body text — so the card reads as a catalogued record. */
+export interface Fact {
+  label: string;
+  value: string;
+}
+
 export const profile = {
   name: "Tom Nguyen",
-  tagline: "swe — ml + systems",
-  email: "tomthuckynguyen@gmail.com",
-  bio: [
-    "currently: @ accordance",
-    "just finished b.s & m.s in cs @stanford",
-    "things that make me happy: volleyball, journaling",
-  ],
+  email: "tomtkkn@gmail.com",
+  facts: [
+    { label: "currently", value: "Member of Technical Staff @ Accordance" },
+    { label: "education", value: "just finished b.s & m.s in cs @ stanford" },
+    { label: "happiest", value: "volleyball, journaling" },
+  ] as Fact[],
 };
 
 // NOTE: YouTube is intentionally omitted. There were two conflicting handles in
