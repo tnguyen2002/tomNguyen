@@ -8,7 +8,7 @@ export interface Fact {
 }
 
 export const profile = {
-  name: "Tom Nguyen",
+  name: "Anh (Tom) Nguyen",
   email: "tomtkkn@gmail.com",
   facts: [
     { label: "currently", value: "member of technical staff @ accordance" },

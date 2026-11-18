@@ -5,7 +5,7 @@ import { profile } from "../../data/profile";
  * Contents of the Home app.
  *
  * No heading of its own — the app sheet supplies the h1, and the Home app's
- * `title` is the name, so the page heading reads "Tom Nguyen" rather than
+ * `title` is the name, so the page heading reads "Anh (Tom) Nguyen" rather than
  * "Home". That keeps the site's one h1 meaningful.
  */
 function DesktopHome() {
